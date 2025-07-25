@@ -397,57 +397,8 @@
             border-radius: 4px;
         }
 
-        /* Estilos para o mapa mental */
-        .mind-map-node {
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-            word-wrap: break-word; /* Garante que o texto quebre a linha */
-        }
-
-        .mind-map-node.level-0 {
-            background-color: #6366f1; /* indigo-500 */
-            color: white;
-            font-size: 1.25rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .mind-map-node.level-1 {
-            background-color: #3b82f6; /* blue-500 */
-            color: white;
-            margin-left: 1.5rem;
-        }
-
-        .mind-map-node.level-2 {
-            background-color: #06b6d4; /* cyan-500 */
-            color: white;
-            margin-left: 3rem;
-        }
-
-        .mind-map-node.level-3 {
-            background-color: #10b981; /* emerald-500 */
-            color: white;
-            margin-left: 4.5rem;
-        }
-
-        .mind-map-node.level-4 {
-            background-color: #f59e0b; /* amber-500 */
-            color: white;
-            margin-left: 6rem;
-        }
-
-        .mind-map-node.level-5 {
-            background-color: #ef4444; /* red-500 */
-            color: white;
-            margin-left: 7.5rem;
-        }
-        
-        /* Ajuste para botões de estudo/mapa mental */
-        .study-button, .mind-map-button {
+        /* Ajuste para botões de estudo */
+        .study-button {
             display: flex;
             align-items: center;
             padding: 0.3rem 0.6rem;
@@ -464,21 +415,8 @@
         .study-button:hover {
             background-color: #bfdbfe; /* blue-100 */
         }
-        .mind-map-button {
-            background-color: #ede9fe; /* violet-50 */
-            color: #7c3aed; /* violet-600 */
-            border: 1px solid #c4b5fd; /* violet-300 */
-            padding: 0.3rem 0.5rem; /* Ajuste o padding para o ícone */
-        }
-        .mind-map-button:hover {
-            background-color: #ddd6fe; /* violet-100 */
-        }
         .study-button svg {
             margin-right: 0.25rem;
-        }
-        /* Removido margin-right para o ícone do mapa mental */
-        .mind-map-button svg {
-            margin-right: 0;
         }
 
     </style>
@@ -1069,27 +1007,6 @@
         </div>
     </div>
 
-    <div id="mind-map-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50 opacity-0" role="dialog" aria-modal="true" aria-labelledby="mind-map-title">
-        <div class="modal-container bg-white w-full max-w-md rounded-xl shadow-2xl p-6 md:p-8 relative transform scale-95 opacity-0">
-            <h3 id="mind-map-title" class="text-2xl font-bold text-violet-700 mb-4">
-                <svg class="w-6 h-6 inline-block mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h-2zm0 6h2v2h-2z"/>
-                </svg>
-                Mapa Mental: <span id="mind-map-topic-name"></span>
-            </h3>
-            <div id="mind-map-content-wrapper">
-                <div id="mind-map-loading-area" class="flex flex-col justify-center items-center h-40 hidden">
-                    <div class="spinner mb-2"></div>
-                    <p class="text-slate-600 font-semibold">Gerando mapa mental...</p>
-                </div>
-                <div id="mind-map-display" class="space-y-2 hidden"></div>
-            </div>
-            <button id="close-mind-map-modal" class="absolute top-4 right-4 text-slate-500 hover:text-slate-800 transition-colors" aria-label="Fechar mapa mental">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </div>
-    </div>
-
 
     <script type="module">
         let currentLevel = null;
@@ -1240,12 +1157,12 @@
         const optionsContainer = document.getElementById('options-container');
         const progressBar = document.getElementById('progress-bar');
 
-        // Mind Map elements
-        const mindMapModal = document.getElementById('mind-map-modal');
-        const mindMapTopicName = document.getElementById('mind-map-topic-name');
-        const mindMapLoadingArea = document.getElementById('mind-map-loading-area');
-        const mindMapDisplay = document.getElementById('mind-map-display');
-        const closeMindMapModalButton = document.getElementById('close-mind-map-modal');
+        // Removed Mind Map elements:
+        // const mindMapModal = document.getElementById('mind-map-modal');
+        // const mindMapTopicName = document.getElementById('mind-map-topic-name');
+        // const mindMapLoadingArea = document.getElementById('mind-map-loading-area');
+        // const mindMapDisplay = document.getElementById('mind-map-display');
+        // const closeMindMapModalButton = document.getElementById('close-mind-map-modal');
 
 
         const grammarData = [
@@ -1767,11 +1684,6 @@
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
                                                 <span>Estudar</span>
                                             </button>
-                                            <button type="button" class="mind-map-button flex items-center" data-topic-id="${topic.id}" data-topic-name="${topic.name}" title="Ver Mapa Mental">
-                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v4h-2zm0 6h2v2h-2z"/>
-                                                </svg>
-                                            </button>
                                         </div>
                                     </label>
                                 `).join('')}
@@ -1802,14 +1714,14 @@
                     openStudyModal(topicId, topicName, 'Estudar:');
                 });
             });
-
-            container.querySelectorAll('.mind-map-button').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const topicId = event.currentTarget.dataset.topicId;
-                    const topicName = event.currentTarget.dataset.topicName;
-                    openMindMapModal(topicId, topicName);
-                });
-            });
+            // Removed mind-map-button event listener
+            // container.querySelectorAll('.mind-map-button').forEach(button => {
+            //     button.addEventListener('click', (event) => {
+            //         const topicId = event.currentTarget.dataset.topicId;
+            //         const topicName = event.currentTarget.dataset.topicName;
+            //         openMindMapModal(topicId, topicName);
+            //     });
+            // });
         }
         
         function renderLawsList() {
@@ -1826,7 +1738,7 @@
                             <span>Consultar</span>
                         </button>
                         ${law.hasQuestions ? `
-                        <button type="button" class="mind-map-button flex items-center" data-law-id="${law.id}" data-law-name="${law.name}" title="Praticar questões sobre este documento">
+                        <button type="button" class="study-button flex items-center" data-law-id="${law.id}" data-law-name="${law.name}" title="Praticar questões sobre este documento">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                             </svg>
@@ -1844,14 +1756,14 @@
                     openStudyModal(lawId, lawName, 'Consultar:');
                 });
             });
-
-            container.querySelectorAll('.mind-map-button').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const lawId = event.currentTarget.dataset.lawId;
-                    const lawName = event.currentTarget.dataset.lawName;
-                    startLawQuiz(lawId, lawName);
-                });
-            });
+            // Removed mind-map-button event listener
+            // container.querySelectorAll('.mind-map-button').forEach(button => {
+            //     button.addEventListener('click', (event) => {
+            //         const lawId = event.currentTarget.dataset.lawId;
+            //         const lawName = event.currentTarget.dataset.lawName;
+            //         startLawQuiz(lawId, lawName);
+            //     });
+            // });
         }
 
         async function callGeminiAPI(prompt, isJson = false, schema = null) {
@@ -2426,90 +2338,92 @@
             }
         }
 
-        async function openMindMapModal(topicId, topicName) {
-            mindMapTopicName.textContent = topicName;
-            mindMapDisplay.innerHTML = '';
-            mindMapDisplay.classList.add('hidden');
-            mindMapLoadingArea.classList.remove('hidden');
-            openModal(mindMapModal);
+        // Removed openMindMapModal function
+        // async function openMindMapModal(topicId, topicName) {
+        //     mindMapTopicName.textContent = topicName;
+        //     mindMapDisplay.innerHTML = '';
+        //     mindMapDisplay.classList.add('hidden');
+        //     mindMapLoadingArea.classList.remove('hidden');
+        //     openModal(mindMapModal);
 
-            try {
-                let prompt = '';
-                const isLaw = educationalLaws.some(law => law.id === topicId);
+        //     try {
+        //         let prompt = '';
+        //         const isLaw = educationalLaws.some(law => law.id === topicId);
 
-                if (isLaw) {
-                    prompt = `Gere uma estrutura de mapa mental muito completo, detalhado, e com lógica clara e hierarquia bem definida em formato JSON sobre a lei "${topicName}". O mapa mental deve usar palavras-chave/frases curtas e ser abrangente. O JSON deve ter um campo "title" e um array "nodes". Cada nó deve ter "text", "color" (escolha entre 'blue', 'green', 'red', 'purple', 'orange', 'cyan', 'emerald', 'amber', 'violet') e opcionalmente "children" (array de nós aninhados). A profundidade máxima deve ser 5 níveis.`;
-                } else {
-                    let subjectName = "gramática portuguesa";
-                    for (const cat of grammarData) {
-                        if (cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topicId))) {
-                            subjectName = cat.category;
-                            break;
-                        }
-                    }
-                    prompt = `Gere uma estrutura de mapa mental muito completo, detalhado, e com lógica clara e hierarquia bem definida em formato JSON sobre o tópico de ${subjectName} "${topicName}". O mapa mental deve usar palavras-chave/frases curtas e ser abrangente. O JSON deve ter um campo "title" e um array "nodes". Cada nó deve ter "text", "color" (escolha entre 'blue', 'green', 'red', 'purple', 'orange', 'cyan', 'emerald', 'amber', 'violet') e opcionalmente "children" (array de nós aninhados). A profundidade máxima deve ser 5 níveis.`;
-                }
+        //         if (isLaw) {
+        //             prompt = `Gere uma estrutura de mapa mental muito completo, detalhado, e com lógica clara e hierarquia bem definida em formato JSON sobre a lei "${topicName}". O mapa mental deve usar palavras-chave/frases curtas e ser abrangente. O JSON deve ter um campo "title" e um array "nodes". Cada nó deve ter "text", "color" (escolha entre 'blue', 'green', 'red', 'purple', 'orange', 'cyan', 'emerald', 'amber', 'violet') e opcionalmente "children" (array de nós aninhados). A profundidade máxima deve ser 5 níveis.`;
+        //         } else {
+        //             let subjectName = "gramática portuguesa";
+        //             for (const cat of grammarData) {
+        //                 if (cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topicId))) {
+        //                     subjectName = cat.category;
+        //                     break;
+        //                 }
+        //             }
+        //             prompt = `Gere uma estrutura de mapa mental muito completo, detalhado, e com lógica clara e hierarquia bem definida em formato JSON sobre o tópico de ${subjectName} "${topicName}". O mapa mental deve usar palavras-chave/frases curtas e ser abrangente. O JSON deve ter um campo "title" e um array "nodes". Cada nó deve ter "text", "color" (escolha entre 'blue', 'green', 'red', 'purple', 'orange', 'cyan', 'emerald', 'amber', 'violet') e opcionalmente "children" (array de nós aninhados). A profundidade máxima deve ser 5 níveis.`;
+        //         }
 
-                const mindMapSchema = {
-                    type: "OBJECT",
-                    properties: {
-                        "title": { "type": "STRING" },
-                        "nodes": {
-                            type: "ARRAY",
-                            items: {
-                                type: "OBJECT",
-                                properties: {
-                                    "text": { "type": "STRING" },
-                                    "color": { "type": "STRING", "enum": ["blue", "green", "red", "purple", "orange", "cyan", "emerald", "amber", "violet"] },
-                                    "children": {
-                                        type: "ARRAY",
-                                        items: { "$ref": "#/definitions/Node" }
-                                    }
-                                },
-                                required: ["text", "color"]
-                            }
-                        }
-                    },
-                    definitions: {
-                        "Node": {
-                            type: "OBJECT",
-                            properties: {
-                                "text": { "type": "STRING" },
-                                "color": { "type": "STRING", "enum": ["blue", "green", "red", "purple", "orange", "cyan", "emerald", "amber", "violet"] },
-                                "children": {
-                                    type: "ARRAY",
-                                    items: { "$ref": "#/definitions/Node" }
-                                }
-                            },
-                            required: ["text", "color"]
-                        }
-                    },
-                    required: ["title", "nodes"]
-                };
+        //         const mindMapSchema = {
+        //             type: "OBJECT",
+        //             properties: {
+        //                 "title": { "type": "STRING" },
+        //                 "nodes": {
+        //                     type: "ARRAY",
+        //                     items: {
+        //                         type: "OBJECT",
+        //                         properties: {
+        //                             "text": { "type": "STRING" },
+        //                             "color": { "type": "STRING", "enum": ["blue", "green", "red", "purple", "orange", "cyan", "emerald", "amber", "violet"] },
+        //                             "children": {
+        //                                 type: "ARRAY",
+        //                                 items: { "$ref": "#/definitions/Node" }
+        //                             }
+        //                         },
+        //                         required: ["text", "color"]
+        //                     }
+        //                 }
+        //             },
+        //             definitions: {
+        //                 "Node": {
+        //                     type: "OBJECT",
+        //                     properties: {
+        //                         "text": { "type": "STRING" },
+        //                         "color": { "type": "STRING", "enum": ["blue", "green", "red", "purple", "orange", "cyan", "emerald", "amber", "violet"] },
+        //                         "children": {
+        //                             type: "ARRAY",
+        //                             items: { "$ref": "#/definitions/Node" }
+        //                         }
+        //                     },
+        //                     required: ["text", "color"]
+        //                 }
+        //             },
+        //             required: ["title", "nodes"]
+        //         };
 
-                const mindMapData = await callGeminiAPI(prompt, true, mindMapSchema);
-                renderMindMap(mindMapData.nodes, mindMapDisplay, 0);
-                mindMapDisplay.classList.remove('hidden');
-            } catch (error) {
-                mindMapDisplay.textContent = 'Ocorreu um erro ao gerar o mapa mental.';
-                mindMapDisplay.classList.remove('hidden');
-            } finally {
-                mindMapLoadingArea.classList.add('hidden');
-            }
-        }
+        //         const mindMapData = await callGeminiAPI(prompt, true, mindMapSchema);
+        //         renderMindMap(mindMapData.nodes, mindMapDisplay, 0);
+        //         mindMapDisplay.classList.remove('hidden');
+        //     } catch (error) {
+        //         mindMapDisplay.textContent = 'Ocorreu um erro ao gerar o mapa mental.';
+        //         mindMapDisplay.classList.remove('hidden');
+        //     } finally {
+        //         mindMapLoadingArea.classList.add('hidden');
+        //     }
+        // }
 
-        function renderMindMap(nodes, parentElement, level) {
-            nodes.forEach(node => {
-                const nodeDiv = document.createElement('div');
-                nodeDiv.className = `mind-map-node level-${level} bg-${node.color}-500 text-white`;
-                nodeDiv.textContent = node.text;
-                parentElement.appendChild(nodeDiv);
+        // Removed renderMindMap function
+        // function renderMindMap(nodes, parentElement, level) {
+        //     nodes.forEach(node => {
+        //         const nodeDiv = document.createElement('div');
+        //         nodeDiv.className = `mind-map-node level-${level} bg-${node.color}-500 text-white`;
+        //         nodeDiv.textContent = node.text;
+        //         parentElement.appendChild(nodeDiv);
 
-                if (node.children && node.children.length > 0 && level < 5) { // Limit depth to avoid overflow
-                    renderMindMap(node.children, nodeDiv, level + 1); // Changed parentElement to nodeDiv for correct nesting
-                }
-            });
-        }
+        //         if (node.children && node.children.length > 0 && level < 5) { // Limit depth to avoid overflow
+        //             renderMindMap(node.children, nodeDiv, level + 1); // Changed parentElement to nodeDiv for correct nesting
+        //         }
+        //     });
+        // }
 
 
         levelSelectButtons.forEach(button => button.addEventListener('click', () => {
@@ -2731,7 +2645,8 @@
         nextTipBtn.addEventListener('click', () => { if (currentTipIndex < currentTips.length - 1) { currentTipIndex++; displayCurrentTip(); } });
         generateMoreTipsBtn.addEventListener('click', () => generateTipsForSection(currentHelpSection, 'more'));
         closeHelpTipsModalBtn.addEventListener('click', () => closeModal(helpTipsModal));
-        closeMindMapModalButton.addEventListener('click', () => closeModal(mindMapModal));
+        // Removed mind map button event listener
+        // closeMindMapModalButton.addEventListener('click', () => closeModal(mindMapModal));
         
         const markedScript = document.createElement('script');
         markedScript.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
