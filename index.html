@@ -471,6 +471,10 @@
                     <button id="level-leis" class="level-select-btn bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-lg" data-level="leis">
                         Leis e Diretrizes da Educação
                     </button>
+                    <!-- Novo botão para Noções de Informática -->
+                    <button id="level-informatica" class="level-select-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-lg" data-level="informatica">
+                        Noções de Informática
+                    </button>
                 </div>
                 <button id="enter-app-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-lg opacity-50 cursor-not-allowed" disabled>
                     Iniciar
@@ -510,6 +514,12 @@
                 <h1 class="text-5xl md:text-6xl font-bold text-slate-700 title-font">SIMULADO GRAMATIQUÊS</h1>
                 <p class="text-slate-500 mt-2 text-lg">Selecione os tópicos e configure seu simulado.</p>
             </header>
+            <div class="mb-6 max-w-2xl mx-auto">
+                <label for="topic-search-input" class="block text-lg font-semibold text-slate-700 mb-2">
+                    Pesquisar Tópico:
+                </label>
+                <input type="text" id="topic-search-input" class="w-full p-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-700" placeholder="Digite para pesquisar tópicos...">
+            </div>
             <main id="topic-container-simulado" class="space-y-8">
                 <!-- As novas categorias de tópicos serão inseridas aqui -->
             </main>
@@ -1156,13 +1166,9 @@
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
         const progressBar = document.getElementById('progress-bar');
-
-        // Removed Mind Map elements:
-        // const mindMapModal = document.getElementById('mind-map-modal');
-        // const mindMapTopicName = document.getElementById('mind-map-topic-name');
-        // const mindMapLoadingArea = document.getElementById('mind-map-loading-area');
-        // const mindMapDisplay = document.getElementById('mind-map-display');
-        // const closeMindMapModalButton = document.getElementById('close-mind-map-modal');
+        
+        // New: Search input for topics
+        const topicSearchInput = document.getElementById('topic-search-input');
 
 
         const grammarData = [
@@ -1605,6 +1611,56 @@
                         ]
                     }
                 ]
+            },
+            {
+                category: "Noções de Informática",
+                levels: ["informatica"],
+                subCategories: [
+                    {
+                        name: "Conteúdo Completo para Concursos",
+                        topics: [
+                            { id: 'conceitos-basicos-informatica', name: 'Conceitos Básicos de Informática', description: 'Fundamentos essenciais da computação, hardware, software, e sistemas de informação, relevantes para questões de concursos FCC, FGV e Cebraspe.' },
+                            { id: 'hardware', name: 'Hardware', description: 'Componentes físicos do computador (CPU, memória, armazenamento, periféricos), suas funções e características, frequentemente abordados em provas de informática.' },
+                            { id: 'software', name: 'Software', description: 'Tipos de software (sistema, aplicativo, utilitário), suas funcionalidades e licenciamento, com foco na aplicabilidade em cenários de concurso.' },
+                            { id: 'sistemas-operacionais', name: 'Sistemas Operacionais (Windows, Linux)', description: 'Princípios e funcionalidades de sistemas operacionais, com ênfase em Windows e Linux, conforme exigido por bancas como Cebraspe.' },
+                            { id: 'windows-10', name: 'Windows 10', description: 'Recursos, interface, gerenciamento de arquivos e configurações do Windows 10, tópico comum em questões de informática para concursos.' },
+                            { id: 'windows-11', name: 'Windows 11', description: 'Novas funcionalidades, interface e compatibilidade do Windows 11, considerando sua crescente relevância em editais.' },
+                            { id: 'organizacao-gerenciamento-arquivos', name: 'Conceitos de Organização e de Gerenciamento de Arquivos', description: 'Estrutura de pastas, cópia, movimentação, exclusão e busca de arquivos, fundamental para provas práticas e teóricas.' },
+                            { id: 'tipos-arquivos-extensoes', name: 'Tipos de Arquivos e Extensões', description: 'Identificação e funcionalidade de diferentes formatos de arquivo e suas extensões, frequentemente cobrado em questões objetivas.' },
+                            { id: 'atalhos-teclado', name: 'Atalhos de Teclado', description: 'Principais atalhos de teclado para sistemas operacionais e aplicativos, visando otimização e agilidade, ponto comum em bancas como FCC.' },
+                            { id: 'microsoft-office', name: 'Pacote Microsoft Office (Word, Excel, PowerPoint, Outlook)', description: 'Uso avançado e recursos específicos dos aplicativos Word, Excel, PowerPoint e Outlook, com questões focadas em funcionalidades e atalhos.' },
+                            { id: 'libreoffice', name: 'LibreOffice (Writer, Calc, Impress)', description: 'Funcionalidades equivalentes do LibreOffice (Writer, Calc, Impress), importante para concursos que abrangem software livre.' },
+                            { id: 'internet-navegadores', name: 'Internet: Conceitos e Navegadores (Chrome, Firefox, Edge)', description: 'Fundamentos da internet, protocolos, e recursos de navegadores web, incluindo Chrome, Firefox e Edge, para questões de navegação e segurança.' },
+                            { id: 'ferramentas-busca', name: 'Ferramentas e Aplicativos de Navegação e Busca (Google, Bing)', description: 'Uso eficiente de motores de busca e ferramentas de pesquisa, com foco em estratégias de busca e avaliação de resultados.' },
+                            { id: 'correio-eletronico', name: 'Correio Eletrônico (e-mail): Uso, Segurança e Etiqueta', description: 'Funcionamento do e-mail, clientes de e-mail, segurança (spam, phishing) e boas práticas de comunicação, tema recorrente em provas.' },
+                            { id: 'armazenamento-nuvem', name: 'Armazenamento em Nuvem (Google Drive, OneDrive, Dropbox)', description: 'Conceitos de cloud storage, sincronização, compartilhamento e segurança em plataformas como Google Drive, OneDrive e Dropbox.' },
+                            { id: 'redes-computadores', name: 'Redes de Computadores: Conceitos Básicos', description: 'Fundamentos de redes (cliente-servidor, peer-to-peer), topologias e componentes, essenciais para entender a conectividade.' },
+                            { id: 'tipos-redes', name: 'Tipos de Redes (LAN, WAN, MAN, PAN)', description: 'Classificação de redes por abrangência geográfica e suas características, com questões sobre cenários de aplicação.' },
+                            { id: 'topologias-redes', name: 'Topologias de Redes (barramento, estrela, anel, malha, híbrida)', description: 'Estruturas físicas e lógicas de redes, suas vantagens e desvantagens, frequentemente cobradas em questões de redes.' },
+                            { id: 'equipamentos-rede', name: 'Equipamentos de Rede (switch, roteador, hub, modem, access point)', description: 'Função e aplicação de dispositivos de rede, como switches, roteadores e modems, em diferentes arquiteturas.' },
+                            { id: 'enderecamento-ip', name: 'Endereçamento IP (IPv4 e IPv6)', description: 'Estrutura e funcionamento dos endereços IP (IPv4 e IPv6), classes de IP, e a transição entre as versões.' },
+                            { id: 'mascara-sub-rede', name: 'Máscara de Sub-rede', description: 'Cálculo e aplicação de máscaras de sub-rede para divisão de redes, um tópico mais técnico, mas presente em provas avançadas.' },
+                            { id: 'dhcp-dns-nat', name: 'DHCP, DNS e NAT', description: 'Protocolos e serviços de rede (DHCP para atribuição de IP, DNS para resolução de nomes, NAT para tradução de endereços), suas funções e importância.' },
+                            { id: 'protocolos-comunicacao', name: 'Protocolos de Comunicação (TCP/IP, HTTP, HTTPS, FTP, SMTP, POP3, IMAP)', description: 'Principais protocolos de rede e suas aplicações (navegação, transferência de arquivos, e-mail), com foco em segurança (HTTPS).' },
+                            { id: 'intranet-extranet', name: 'Intranet e Extranet', description: 'Diferenças e aplicações de redes corporativas internas (Intranet) e externas (Extranet), e seus usos em organizações.' },
+                            { id: 'compartilhamento-arquivos-impressoras', name: 'Compartilhamento de Arquivos e Impressoras em Rede', description: 'Configuração e segurança para compartilhamento de recursos em ambientes de rede, com questões sobre permissões e acesso.' },
+                            { id: 'seguranca-redes', name: 'Segurança em Redes (firewall, criptografia, VPN)', description: 'Conceitos e ferramentas de segurança de rede (firewall, VPN, criptografia), essenciais para proteger dados e sistemas.' },
+                            { id: 'wi-fi', name: 'Wi-Fi: Configurações, Segurança e Padrões (802.11a/b/g/n/ac/ax)', description: 'Tecnologias de rede sem fio, padrões Wi-Fi, configurações de segurança (WPA2, WPA3) e otimização de conexão.' },
+                            { id: 'cabeamento-estruturado', name: 'Cabeamento Estruturado', description: 'Padrões e componentes de infraestrutura de cabeamento para redes, incluindo tipos de cabos e conectores.' },
+                            { id: 'testes-conectividade', name: 'Testes de Conectividade (ping, tracert, ipconfig, nslookup)', description: 'Comandos e ferramentas para diagnóstico de rede, como ping, tracert, ipconfig e nslookup, para identificar problemas de conexão.' },
+                            { id: 'internet-coisas', name: 'Conceitos de Internet das Coisas (IoT)', description: 'Fundamentos da IoT, dispositivos conectados, aplicações e desafios de segurança e privacidade.' },
+                            { id: 'computacao-nuvem', name: 'Computação em Nuvem (Cloud Computing)', description: 'Modelos de serviço (IaaS, PaaS, SaaS), implantação (pública, privada, híbrida) e vantagens da computação em nuvem.' },
+                            { id: 'navegacao-segura', name: 'Navegação Segura, Certificados Digitais e Criptografia', description: 'Práticas de segurança online, uso de certificados digitais para autenticação e criptografia para proteção de dados.' },
+                            { id: 'backup-recuperacao', name: 'Backup e Recuperação de Dados em Rede', description: 'Estratégias de backup (completo, incremental, diferencial), armazenamento e planos de recuperação de desastres em ambientes de rede.' },
+                            { id: 'boas-praticas-seguranca', name: 'Boas Práticas de Segurança Digital', description: 'Medidas preventivas e comportamentos seguros para proteger informações e sistemas contra ameaças cibernéticas.' },
+                            { id: 'videoconferencia', name: 'Aplicativos de Videoconferência (Zoom, Teams, Meet)', description: 'Funcionalidades e uso de plataformas de videoconferência, com foco em recursos de colaboração e segurança.' },
+                            { id: 'dispositivos-moveis-redes-sem-fio', name: 'Dispositivos Móveis e Redes Sem Fio', description: 'Conectividade, segurança e gerenciamento de smartphones, tablets e outros dispositivos móveis em redes sem fio.' },
+                            { id: 'ferramentas-produtividade-colaboracao', name: 'Ferramentas de Produtividade e Colaboração Online', description: 'Uso de ferramentas para trabalho em equipe, edição colaborativa e comunicação em tempo real.' },
+                            { id: 'softwares-utilitarios', name: 'Softwares Utilitários e Ferramentas do Sistema', description: 'Funções de utilitários (compactadores, antivírus) e ferramentas de sistema (gerenciador de tarefas, desfragmentador) para manutenção.' },
+                            { id: 'etica-legislacao-informatica', name: 'Noções de Ética e Legislação em Informática (LGPD, Crimes Digitais)', description: 'Aspectos legais e éticos do uso da tecnologia, incluindo a Lei Geral de Proteção de Dados (LGPD) e crimes cibernéticos.' }
+                        ]
+                    }
+                ]
             }
         ];
         
@@ -1615,7 +1671,7 @@
             { id: 'eca', name: 'ECA - Estatuto da Criança e do Adolescente (Lei nº 8.069/90)', hasQuestions: true },
             { id: 'lei-inclusao', name: 'Lei Brasileira de Inclusão da Pessoa com Deficiência (Lei nº 13.146/15)', hasQuestions: true },
             { id: 'lei-libras', name: 'Lei de Libras (Lei nº 10.436/02)', hasQuestions: true },
-            { id: 'lei-historia-afro', name: 'Lei nº 10.639/03 - História e Cultura Afro-Brasileira e Africana', hasQuestions: true },
+            { id: 'lei-historia-afro', name: 'Lei nº 10.639/03 - História e Cultura Afro-Brasileira e Africana', hasQuestions: true }
         ];
 
         function showScreen(screenToShow) {
@@ -1661,21 +1717,32 @@
             }
         }
 
-        function renderTopics() {
+        function renderTopics(searchTerm = '') {
             const container = topicContainerSimulado;
             container.innerHTML = '';
-            // Filtra as categorias para incluir apenas aquelas que correspondem ao currentLevel
+            const lowerCaseSearchTerm = searchTerm.toLowerCase();
+
             const categoriesForCurrentLevel = grammarData.filter(category => category.levels.includes(currentLevel));
 
             categoriesForCurrentLevel.forEach(category => {
                 if (category.subCategories) {
-                    category.subCategories.forEach(subCategory => {
+                    const filteredSubCategories = subCategory => {
+                        const filteredTopics = subCategory.topics.filter(topic =>
+                            topic.name.toLowerCase().includes(lowerCaseSearchTerm)
+                        );
+                        // Only show subcategory if it has matching topics OR if its name matches the search term
+                        return filteredTopics.length > 0 || subCategory.name.toLowerCase().includes(lowerCaseSearchTerm);
+                    };
+
+                    category.subCategories.filter(filteredSubCategories).forEach(subCategory => {
                         const subCategoryDiv = document.createElement('div');
                         subCategoryDiv.className = 'bg-white p-6 rounded-xl shadow-md topic-card';
                         subCategoryDiv.innerHTML = `
                             <h3 class="text-xl font-bold text-sky-700 mb-4">${category.category} - ${subCategory.name}</h3>
                             <div class="topic-list-grid grid grid-cols-1 md:grid-cols-2 gap-3">
-                                ${subCategory.topics.map(topic => `
+                                ${subCategory.topics.filter(topic =>
+                                    topic.name.toLowerCase().includes(lowerCaseSearchTerm)
+                                ).map(topic => `
                                     <label class="flex items-center p-3 border border-slate-300 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors">
                                         <input type="checkbox" data-topic-id="${topic.id}" data-topic-name="${topic.name}" class="topic-checkbox w-5 h-5 text-blue-600 rounded focus:ring-blue-500 mr-3">
                                         <span class="text-slate-700 font-medium">${topic.name}</span>
@@ -1714,14 +1781,6 @@
                     openStudyModal(topicId, topicName, 'Estudar:');
                 });
             });
-            // Removed mind-map-button event listener
-            // container.querySelectorAll('.mind-map-button').forEach(button => {
-            //     button.addEventListener('click', (event) => {
-            //         const topicId = event.currentTarget.dataset.topicId;
-            //         const topicName = event.currentTarget.dataset.topicName;
-            //         openMindMapModal(topicId, topicName);
-            //     });
-            // });
         }
         
         function renderLawsList() {
@@ -1756,14 +1815,6 @@
                     openStudyModal(lawId, lawName, 'Consultar:');
                 });
             });
-            // Removed mind-map-button event listener
-            // container.querySelectorAll('.mind-map-button').forEach(button => {
-            //     button.addEventListener('click', (event) => {
-            //         const lawId = event.currentTarget.dataset.lawId;
-            //         const lawName = event.currentTarget.dataset.lawName;
-            //         startLawQuiz(lawId, lawName);
-            //     });
-            // });
         }
 
         async function callGeminiAPI(prompt, isJson = false, schema = null, maxRetries = 3, retryDelayMs = 1000) {
@@ -1839,17 +1890,24 @@
             try {
                 let prompt = '';
                 const isLaw = educationalLaws.some(law => law.id === topicId);
+                let subjectName = "";
 
-                if (isLaw) {
-                    prompt = `Gere um resumo completo e os pontos mais importantes do seguinte documento: "${topicName}". Organize o conteúdo de forma clara e didática, usando títulos e subtítulos em Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
+                if (currentLevel === 'informatica') {
+                    subjectName = "Noções de Informática";
+                } else if (isLaw) {
+                    subjectName = "Legislação Educacional";
                 } else {
-                    let subjectName = "gramática portuguesa";
                     for (const cat of grammarData) {
                         if (cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topicId))) {
                             subjectName = cat.category;
                             break;
                         }
                     }
+                }
+
+                if (isLaw) {
+                    prompt = `Gere um resumo completo e os pontos mais importantes do seguinte documento: "${topicName}". Organize o conteúdo de forma clara e didática, usando títulos e subtítulos em Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
+                } else {
                     prompt = `Gere um material de estudo detalhado e didático sobre o tópico de ${subjectName} "${topicName}" para o nível de concurso público. Inclua exemplos claros e, se possível, um pequeno exercício com gabarito. Formate a resposta usando Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
                 }
                 
@@ -1912,19 +1970,22 @@
                 for (const topic of selectedTopics) {
                     const numQuestionsForTopic = topic.quantity || Math.ceil(questionQuantity / selectedTopics.length);
                     let prompt = '';
+                    let subjectName = "";
 
-                    if (currentLevel === 'leis') {
-                        prompt = `Gere ${numQuestionsForTopic} questões sobre a lei "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça um enunciado ("question"), ${responseMode === 'multipla-escolha' ? '5 opções de resposta ("options")' : 'uma afirmação'}, e a resposta correta ("correctAnswer"). Se relevante, inclua um texto de apoio ("textContext").`;
+                    if (currentLevel === 'informatica') {
+                        subjectName = "Noções de Informática";
+                    } else if (currentLevel === 'leis') {
+                        subjectName = "Legislação Educacional";
                     } else {
-                        let subjectName = "gramática portuguesa";
                         for (const cat of grammarData) {
-                            if (cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topic.id))) {
+                            if (cat.levels.includes(currentLevel) && cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topic.id))) {
                                 subjectName = cat.category;
                                 break;
                             }
                         }
-                        prompt = `Gere ${numQuestionsForTopic} questões sobre o tópico de ${subjectName} "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça um enunciado ("question"), ${responseMode === 'multipla-escolha' ? '5 opções de resposta ("options")' : 'uma afirmação'}, e a resposta correta ("correctAnswer"). Se relevante, inclua um texto de apoio ("textContext").`;
                     }
+
+                    prompt = `Gere ${numQuestionsForTopic} questões sobre o tópico de ${subjectName} "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça um enunciado ("question"), ${responseMode === 'multipla-escolha' ? '5 opções de resposta ("options")' : 'uma afirmação'}, e a resposta correta ("correctAnswer"). Se relevante, inclua um texto de apoio ("textContext").`;
                     
                     console.log('Prompt for Gemini:', prompt); // Debugging log
                     
@@ -1979,8 +2040,10 @@
             openModal(studyModal); // Open the modal immediately
 
             try {
-                let subjectName = "gramática portuguesa";
-                if (currentLevel === 'leis') {
+                let subjectName = "";
+                if (currentLevel === 'informatica') {
+                    subjectName = "Noções de Informática";
+                } else if (currentLevel === 'leis') {
                     subjectName = "Legislação Educacional";
                 } else {
                     for (const cat of grammarData) {
@@ -2185,7 +2248,6 @@
                 generatedEssayTheme = '';
                 generatedThemeText.textContent = ''; // Clear the displayed theme text
                 themeDisplay.classList.add('hidden'); // Hide the theme display area
-                // Do NOT open modalGerarTema here. It should only open when generateThemeBtn is clicked.
             }
         }
 
@@ -2242,6 +2304,7 @@
             updateStartButtonState(startSimuladoButton);
             redoEssay(false); // reseta e oculta campos da redação, mas não abre o modal de tema
             themeDisplay.classList.add('hidden');
+            topicSearchInput.value = ''; // Clear search input
         }
 
         async function startQuizOrSimulado() {
@@ -2255,7 +2318,12 @@
             currentQuestionIndex = 0;
             score = 0;
             scoreDisplay.textContent = score;
-            const subject = grammarData.find(cat => cat.levels.includes(currentLevel))?.category || "Simulado";
+            let subject = "Simulado";
+            if (currentLevel === 'informatica') {
+                subject = "Noções de Informática";
+            } else {
+                subject = grammarData.find(cat => cat.levels.includes(currentLevel))?.category || "Simulado";
+            }
             quizTopicTitle.textContent = `${subject} - Nível: ${difficulty || 'N/A'}`;
             startTimer();
             quizQuestions = await generateQuestions();
@@ -2304,7 +2372,7 @@
             });
         }
 
-        const disciplineCategoryMap = { "Português": "Língua Portuguesa", "Pedagogia": "Conhecimentos Pedagógicos", "Direito": "Direito" };
+        const disciplineCategoryMap = { "Português": "Língua Portuguesa", "Pedagogia": "Conhecimentos Pedagógicos", "Direito": "Direito", "Informática": "Noções de Informática" };
 
         async function generateEssayTheme(type, specificTheme = '') {
             temaLoadingArea.classList.remove('hidden');
@@ -2320,7 +2388,7 @@
             try {
                 const theme = await callGeminiAPI(prompt);
                 // Clean up the theme string from any unwanted characters or extra text
-                generatedEssayTheme = theme.replace(/^(Tema:\s*|##\s*\*\*|\*\*|["'])/gi, '').replace(/["']$/g, '').trim();
+                generatedEssayTheme = theme.replace(/^(Tema:\s*|##\s*\*\*|\*\*|["'])/gi, '', '').replace(/["']$/g, '').trim();
                 generatedThemeText.textContent = generatedEssayTheme;
                 themeDisplay.classList.remove('hidden');
                 closeModal(modalGerarTema);
@@ -2409,93 +2477,6 @@
             }
         }
 
-        // Removed openMindMapModal function
-        // async function openMindMapModal(topicId, topicName) {
-        //     mindMapTopicName.textContent = topicName;
-        //     mindMapDisplay.innerHTML = '';
-        //     mindMapDisplay.classList.add('hidden');
-        //     mindMapLoadingArea.classList.remove('hidden');
-        //     openModal(mindMapModal);
-
-        //     try {
-        //         let prompt = '';
-        //         const isLaw = educationalLaws.some(law => law.id === topicId);
-
-        //         if (isLaw) {
-        //             prompt = `Gere uma estrutura de mapa mental muito completo, detalhado, e com lógica clara e hierarquia bem definida em formato JSON sobre a lei "${topicName}". O mapa mental deve usar palavras-chave/frases curtas e ser abrangente. O JSON deve ter um campo "title" e um array "nodes". Cada nó deve ter "text", "color" (escolha entre 'blue', 'green', 'red', 'purple', 'orange', 'cyan', 'emerald', 'amber', 'violet') e opcionalmente "children" (array de nós aninhados). A profundidade máxima deve ser 5 níveis.`;
-        //         } else {
-        //             let subjectName = "gramática portuguesa";
-        //             for (const cat of grammarData) {
-        //                 if (cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topic.id))) {
-        //                     subjectName = cat.category;
-        //                     break;
-        //                 }
-        //             }
-        //             prompt = `Gere uma estrutura de mapa mental muito completo, detalhado, e com lógica clara e hierarquia bem definida em formato JSON sobre o tópico de ${subjectName} "${topicName}". O mapa mental deve usar palavras-chave/frases curtas e ser abrangente. O JSON deve ter um campo "title" e um array "nodes". Cada nó deve ter "text", "color" (escolha entre 'blue', 'green', 'red', 'purple', 'orange', 'cyan', 'emerald', 'amber', 'violet') e opcionalmente "children" (array de nós aninhados). A profundidade máxima deve ser 5 níveis.`;
-        //         }
-
-        //         const mindMapSchema = {
-        //             type: "OBJECT",
-        //             properties: {
-        //                 "title": { "type": "STRING" },
-        //                 "nodes": {
-        //                     type: "ARRAY",
-        //                     items: {
-        //                         type: "OBJECT",
-        //                         properties: {
-        //                             "text": { "type": "STRING" },
-        //                             "color": { "type": "STRING", "enum": ["blue", "green", "red", "purple", "orange", "cyan", "emerald", "amber", "violet"] },
-        //                             "children": {
-        //                                 type: "ARRAY",
-        //                                 items: { "$ref": "#/definitions/Node" }
-        //                             }
-        //                         },
-        //                         required: ["text", "color"]
-        //                     }
-        //                 }
-        //             },
-        //             definitions: {
-        //                 "Node": {
-        //                     type: "OBJECT",
-        //                     properties: {
-        //                         "text": { "type": "STRING" },
-        //                         "color": { "type": "STRING", "enum": ["blue", "green", "red", "purple", "orange", "cyan", "emerald", "amber", "violet"] },
-        //                         "children": {
-        //                             type: "ARRAY",
-        //                             items: { "$ref": "#/definitions/Node" }
-        //                         }
-        //                     },
-        //                     required: ["text", "color"]
-        //                 }
-        //             },
-        //             required: ["title", "nodes"]
-        //         };
-
-        //         const mindMapData = await callGeminiAPI(prompt, true, mindMapSchema);
-        //         renderMindMap(mindMapData.nodes, mindMapDisplay, 0);
-        //         mindMapDisplay.classList.remove('hidden');
-        //     } catch (error) {
-        //         mindMapDisplay.textContent = 'Ocorreu um erro ao gerar o mapa mental.';
-        //         mindMapDisplay.classList.remove('hidden');
-        //     } finally {
-        //         mindMapLoadingArea.classList.add('hidden');
-        //     }
-        // }
-
-        // Removed renderMindMap function
-        // function renderMindMap(nodes, parentElement, level) {
-        //     nodes.forEach(node => {
-        //         const nodeDiv = document.createElement('div');
-        //         nodeDiv.className = `mind-map-node level-${level} bg-${node.color}-500 text-white`;
-        //         nodeDiv.textContent = node.text;
-        //         parentElement.appendChild(nodeDiv);
-
-        //         if (node.children && node.children.length > 0 && level < 5) { // Limit depth to avoid overflow
-        //             renderMindMap(node.children, nodeDiv, level + 1); // Changed parentElement to nodeDiv for correct nesting
-        //         }
-        //     });
-        // }
-
 
         levelSelectButtons.forEach(button => button.addEventListener('click', () => {
             currentLevel = button.dataset.level;
@@ -2512,7 +2493,7 @@
                 renderLawsList();
                 showScreen(lawsScreen);
             } else {
-                renderTopics();
+                renderTopics(); // Render topics initially without a search term
                 showScreen(simuladoSetupScreen);
             }
         });
@@ -2701,9 +2682,12 @@
         nextTipBtn.addEventListener('click', () => { if (currentTipIndex < currentTips.length - 1) { currentTipIndex++; displayCurrentTip(); } });
         generateMoreTipsBtn.addEventListener('click', () => generateTipsForSection(currentHelpSection, 'more'));
         closeHelpTipsModalBtn.addEventListener('click', () => closeModal(helpTipsModal));
-        // Removed mind map button event listener
-        // closeMindMapModalButton.addEventListener('click', () => closeModal(mindMapModal));
         
+        // New: Event listener for topic search input
+        topicSearchInput.addEventListener('input', (event) => {
+            renderTopics(event.target.value);
+        });
+
         const markedScript = document.createElement('script');
         markedScript.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
         document.head.appendChild(markedScript);
