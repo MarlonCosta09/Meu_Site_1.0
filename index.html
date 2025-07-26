@@ -1194,7 +1194,7 @@
                             { id: 'preposicao', name: 'Preposição', description: 'Conceito, classificação e combinação de preposições.' },
                             { id: 'conjuncao', name: 'Conjunção', description: 'Coordenativas e subordinativas, seu papel na conexão de orações.' },
                             { id: 'interjeicao', name: 'Interjeição', description: 'Expressão de emoções e sentimentos.' },
-                            { id: 'estrutura-palavras', name: 'Estrutura e Formação das Palavras', description: 'Radical, afixos, desinências, derivação e composição.' }
+                            { id: 'estrutura-formacao-palavras', name: 'Estrutura e Formação das Palavras', description: 'Estudo de morfemas (radical, afixos, desinências), processos de formação (derivação prefixal, sufixal, parassintética, regressiva, imprópria) e composição (justaposição, aglutinação).' }
                         ]
                     },
                     {
@@ -2617,41 +2617,6 @@
                     }
                 }
             });
-        });
-
-        // Logic to pre-select radio buttons and apply 'selected' class when opening modals
-        btnDifficulty.addEventListener('click', () => {
-            openModal(document.getElementById('difficulty-modal'));
-            document.querySelectorAll('.difficulty-label').forEach(label => {
-                label.classList.remove('selected');
-            });
-            if (difficulty) {
-                const radioToSelect = document.getElementById(`modal-difficulty-${difficulty}`);
-                if (radioToSelect) {
-                    radioToSelect.checked = true;
-                    const correspondingLabel = document.querySelector(`label[for="modal-difficulty-${difficulty}"]`);
-                    if (correspondingLabel) {
-                        correspondingLabel.classList.add('selected');
-                    }
-                }
-            }
-        });
-
-        btnResponseMode.addEventListener('click', () => {
-            openModal(document.getElementById('response-mode-modal'));
-            document.querySelectorAll('.response-mode-label').forEach(label => {
-                label.classList.remove('selected');
-            });
-            if (responseMode) {
-                const radioToSelect = document.getElementById(`modal-response-mode-${responseMode}`);
-                if (radioToSelect) {
-                    radioToSelect.checked = true;
-                    const correspondingLabel = document.querySelector(`label[for="modal-response-mode-${responseMode}"]`);
-                    if (correspondingLabel) {
-                        correspondingLabel.classList.add('selected');
-                    }
-                }
-            }
         });
 
 
