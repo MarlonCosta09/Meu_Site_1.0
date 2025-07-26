@@ -1576,7 +1576,7 @@
                     {
                         name: "Direito Eleitoral",
                         topics: [
-                            { id: 'eleit-principios', name: 'Princípios do Direito Eleitoral', description: 'Soberania popular, voto direto, secreto, universal e periódico.' },
+                            { id: 'eleit-principios', name: 'Soberania popular, voto direto, secreto, universal e periódico.' },
                             { id: 'eleit-justica-eleitoral', name: 'Organização da Justiça Eleitoral', description: 'TSE, TREs, Juízes Eleitorais, Juntas Eleitorais.' },
                             { id: 'eleit-alistamento-eleitoral', name: 'Alistamento Eleitoral e Domicílio Eleitoral', description: 'Capacidade eleitoral ativa e passiva.' },
                             { id: 'eleit-elegibilidade-inelegibilidade', name: 'Elegibilidade e Inelegibilidade', description: 'Condições e causas de inelegibilidade.' },
@@ -1894,8 +1894,11 @@
 
                 if (currentLevel === 'informatica') {
                     subjectName = "Noções de Informática";
+                    // Enhanced prompt for "Noções de Informática"
+                    prompt = `Gere um material de estudo **muito detalhado, aprofundado, abrangente e didático** sobre o tópico de ${subjectName} "${topicName}" para o nível de concurso público. Inclua **todos os conceitos essenciais, exemplos práticos, e a relevância para questões de concursos das bancas FCC, FGV e Cebraspe**. Aborde o assunto de forma completa, com títulos e subtítulos em Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
                 } else if (isLaw) {
                     subjectName = "Legislação Educacional";
+                    prompt = `Gere um resumo completo e os pontos mais importantes do seguinte documento: "${topicName}". Organize o conteúdo de forma clara e didática, usando títulos e subtítulos em Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
                 } else {
                     for (const cat of grammarData) {
                         if (cat.subCategories?.some(subCat => subCat.topics.some(t => t.id === topicId))) {
@@ -1903,11 +1906,6 @@
                             break;
                         }
                     }
-                }
-
-                if (isLaw) {
-                    prompt = `Gere um resumo completo e os pontos mais importantes do seguinte documento: "${topicName}". Organize o conteúdo de forma clara e didática, usando títulos e subtítulos em Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
-                } else {
                     prompt = `Gere um material de estudo detalhado e didático sobre o tópico de ${subjectName} "${topicName}" para o nível de concurso público. Inclua exemplos claros e, se possível, um pequeno exercício com gabarito. Formate a resposta usando Markdown. Para termos chave, use a tag HTML <highlight-term>termo</highlight-term>. Para sublinhar, use <underline-text>texto a sublinhar</underline-text>. Para destacar frases importantes, use <important-phrase>frase importante</important-phrase>.`;
                 }
                 
