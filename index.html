@@ -2048,7 +2048,23 @@
                         }
                     }
 
-                    prompt = `Gere ${numQuestionsForTopic} questões sobre o tópico de ${subjectName} "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça um enunciado ("question"), ${responseMode === 'multipla-escolha' ? '5 opções de resposta ("options")' : 'uma afirmação'}, e a resposta correta ("correctAnswer"). Se relevante, inclua um texto de apoio ("textContext").`;
+                    // --- INÍCIO DA MODIFICAÇÃO PARA O TIPO DE GABARITO ---
+                    let promptQuestionFormat = '';
+                    let promptOptionsFormat = '';
+                    let promptCorrectAnswerFormat = '';
+
+                    if (responseMode === 'multipla-escolha') {
+                        promptQuestionFormat = 'um enunciado ("question")';
+                        promptOptionsFormat = '5 opções de resposta ("options")';
+                        promptCorrectAnswerFormat = 'uma das 5 opções para o campo "correctAnswer"';
+                    } else if (responseMode === 'certo-errado') {
+                        promptQuestionFormat = 'uma afirmação para o campo "question" (que seja verdadeira ou falsa)';
+                        promptOptionsFormat = 'o campo "options" deve conter estritamente apenas ["Certo", "Errado"]';
+                        promptCorrectAnswerFormat = 'o campo "correctAnswer" deve ser estritamente "Certo" ou "Errado"';
+                    }
+
+                    prompt = `Gere ${numQuestionsForTopic} questões sobre o tópico de ${subjectName} "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça ${promptQuestionFormat}, ${promptOptionsFormat}, e ${promptCorrectAnswerFormat}. Se relevante, inclua um texto de apoio ("textContext").`;
+                    // --- FIM DA MODIFICAÇÃO PARA O TIPO DE GABARITO ---
                     
                     const parsedQuestions = await callGeminiAPI(prompt, true, responseSchema);
                     parsedQuestions.forEach(q => {
