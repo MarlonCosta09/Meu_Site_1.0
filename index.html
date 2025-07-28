@@ -2061,6 +2061,13 @@
                         promptQuestionFormat = 'uma afirmação para o campo "question" (que seja verdadeira ou falsa)';
                         promptOptionsFormat = 'o campo "options" deve conter estritamente apenas ["Certo", "Errado"]';
                         promptCorrectAnswerFormat = 'o campo "correctAnswer" deve ser estritamente "Certo" ou "Errado"';
+                        // Adjust schema for Certo/Errado to expect only two options
+                        responseSchema.items.properties.options = {
+                            type: "ARRAY",
+                            items: { "type": "STRING" },
+                            minItems: 2,
+                            maxItems: 2
+                        };
                     }
 
                     prompt = `Gere ${numQuestionsForTopic} questões sobre o tópico de ${subjectName} "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça ${promptQuestionFormat}, ${promptOptionsFormat}, e ${promptCorrectAnswerFormat}. Se relevante, inclua um texto de apoio ("textContext").`;
@@ -2737,12 +2744,15 @@
         btnTemasDisciplina.addEventListener('click', () => {
             currentThemeInputContainer.classList.add('hidden');
             disciplinaSelectContainer.classList.remove('hidden');
-            // Only enable if a discipline is selected
+            // Set theme type for confirmation
+            confirmGerarTemaBtn.dataset.themeType = 'discipline';
+            // Check initial state of selectDisciplinaTema to enable/disable button
             confirmGerarTemaBtn.disabled = !selectDisciplinaTema.value;
             confirmGerarTemaBtn.classList.toggle('opacity-50', !selectDisciplinaTema.value);
             confirmGerarTemaBtn.classList.toggle('cursor-not-allowed', !selectDisciplinaTema.value);
         });
         selectDisciplinaTema.addEventListener('change', () => {
+            // Enable/disable button based on selection
             confirmGerarTemaBtn.disabled = !selectDisciplinaTema.value;
             confirmGerarTemaBtn.classList.toggle('opacity-50', !selectDisciplinaTema.value);
             confirmGerarTemaBtn.classList.toggle('cursor-not-allowed', !selectDisciplinaTema.value);
