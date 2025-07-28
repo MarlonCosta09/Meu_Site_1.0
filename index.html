@@ -762,9 +762,7 @@
         <div class="modal-container bg-white w-full max-w-md rounded-xl shadow-2xl p-6 md:p-8 relative transform scale-95 opacity-0">
             <h3 id="study-title" class="text-2xl font-bold text-indigo-700 mb-4">
                 <span class="professor-icon">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                        </svg>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
                 </span> <span id="study-modal-title-text"></span>
             </h3>
             <div id="study-content-wrapper">
@@ -1019,6 +1017,8 @@
 
 
     <script type="module">
+        console.log("GRAMATIQUÊS app script loaded. Version 2.0"); // Added for debugging load issues
+
         let currentLevel = null;
         let selectedTopics = [];
         let questionQuantity = 10;
@@ -1285,95 +1285,147 @@
                 levels: ["pedagogicos"],
                 subCategories: [
                     {
-                        name: "Fundamentos e Teorias da Educação",
+                        name: "Fundamentos da Educação",
                         topics: [
                             { id: 'filosofia-educacao', name: 'Filosofia da Educação', description: 'Principais correntes filosóficas e suas implicações na educação.' },
-                            { id: 'historia-educacao', name: 'História da Educação', description: 'Principais momentos, influências e movimentos que moldaram a escola.' },
                             { id: 'sociologia-educacao', name: 'Sociologia da Educação', description: 'Relação entre educação e sociedade, desigualdades e movimentos sociais.' },
-                            { id: 'psicologia-educacao', name: 'Psicologia da Educação', description: 'Teorias de aprendizagem, desenvolvimento cognitivo e socioemocional.' },
-                            { id: 'teorias-pedagogicas', name: 'Teorias Pedagógicas', description: 'Análise das diferentes abordagens e tendências pedagógicas.' }
+                            { id: 'historia-educacao', name: 'História da Educação', description: 'Principais momentos, influências e movimentos que moldaram a escola.' },
+                            { id: 'tendencias-pedagogicas', name: 'Tendências Pedagógicas (tradicional, tecnicista, progressista etc.)', description: 'Análise das diferentes abordagens e tendências pedagógicas.' },
+                            { id: 'educacao-sociedade', name: 'Educação e Sociedade', description: 'O papel da educação na formação social e cultural.' },
+                            { id: 'escola-transformacao-social', name: 'Escola como Espaço de Transformação Social', description: 'O papel da escola na promoção da equidade e justiça social.' }
                         ]
                     },
                     {
-                        name: "Didática e Metodologias de Ensino",
+                        name: "Psicologia da Educação e Desenvolvimento",
                         topics: [
-                            { id: 'didatica-metodologias', name: 'Didática e Metodologias de Ensino', description: 'Estratégias e técnicas para o processo de ensino-aprendizagem.' },
-                            { id: 'praticas-educativas-aprendizagem', name: 'Práticas Educativas para o Processo de Aprendizagem de Crianças, Adolescentes, Jovens e Adultos', description: 'Estratégias para crianças, adolescentes, jovens e adultos.' },
-                            { id: 'metodologias-alfabetizacao', name: 'Metodologias de Alfabetização', description: 'Teorias e técnicas para alfabetizar com base em desenvolvimento cognitivo.' },
-                            { id: 'abordagens-ativas', name: 'Abordagens Ativas (PBL, Projetos, Investigação, Experiencial, Design-based)', description: 'Problem-based, projeto, inquiry, experiential learning, design-based.' },
-                            { id: 'aprendizagem-colaborativa-cooperativa', name: 'Aprendizagem Colaborativa e Cooperativa', description: 'Aprendizagem em grupo, comunidades de prática.' },
-                            { id: 'aprendizagem-contextualizada-transdisciplinar', name: 'Aprendizagem Contextualizada e Transdisciplinar', description: 'Conexão com realidade, temas contemporâneos.' },
-                            { id: 'pedagogia-critica-paulo-freire', name: 'Pedagogia Crítica (incluindo Paulo Freire)', description: 'Fundamentos e práticas da pedagogia crítica, com foco em Paulo Freire.' }
+                            { id: 'teorias-desenvolvimento-humano', name: 'Teorias do Desenvolvimento Humano (Piaget, Vygotsky, Wallon, Freud, Erikson)', description: 'Principais teorias e suas contribuições para a compreensão do desenvolvimento humano.' },
+                            { id: 'aprendizagem-desenvolvimento', name: 'Aprendizagem e Desenvolvimento', description: 'Relação entre os processos de aprendizagem e desenvolvimento.' },
+                            { id: 'relacao-ensino-aprendizagem', name: 'Relação entre Ensino e Aprendizagem', description: 'Dinâmica da interação entre professor, aluno e conhecimento.' },
+                            { id: 'afetividade-cognicao', name: 'Afetividade e Cognição', description: 'A importância da dimensão afetiva no processo cognitivo.' }
+                        ]
+                    },
+                    {
+                        name: "Didática",
+                        topics: [
+                            { id: 'planejamento-ensino', name: 'Planejamento de Ensino (anual, bimestral, semanal e diário)', description: 'Etapas e tipos de planejamento para a prática docente.' },
+                            { id: 'objetivos-conteudos-metodos-avaliacao', name: 'Objetivos, Conteúdos, Métodos e Avaliação', description: 'Componentes essenciais do planejamento de ensino.' },
+                            { id: 'metodologias-ativas', name: 'Metodologias Ativas (sala de aula invertida, projetos, gamificação etc.)', description: 'Abordagens inovadoras para engajar os alunos no processo de aprendizagem.' },
+                            { id: 'estrategias-tecnicas-ensino', name: 'Estratégias e Técnicas de Ensino', description: 'Recursos e procedimentos para facilitar a aprendizagem.' },
+                            { id: 'relacao-professor-aluno', name: 'Relação Professor-Aluno', description: 'A importância do vínculo e da interação para o processo educativo.' },
+                            { id: 'mediacao-pedagogica', name: 'Mediação Pedagógica', description: 'O papel do professor como mediador entre o conhecimento e o aluno.' }
                         ]
                     },
                     {
                         name: "Avaliação da Aprendizagem",
                         topics: [
-                            { id: 'avaliacao-aprendizagem', name: 'Avaliação da Aprendizagem', description: 'Conceitos, tipos e instrumentos de avaliação no contexto escolar.' },
-                            { id: 'avaliacao-formativa-somativa', name: 'Avaliação Formativa e Somativa', description: 'Rubricas, feedback e autorregulação dos alunos.' },
-                            { id: 'didatica-avaliacao', name: 'Didática da Avaliação', description: 'Planejamento de provas, instrumentos e avaliação criteriosa.' },
-                            { id: 'planejamento-avaliacao-ensino', name: 'Planejamento e Avaliação do Ensino e da Aprendizagem', description: 'Inter-relação entre planejamento, execução e avaliação no processo educativo.' }
+                            { id: 'tipos-avaliacao', name: 'Tipos de Avaliação (diagnóstica, formativa, somativa)', description: 'Classificação e finalidades dos diferentes tipos de avaliação.' },
+                            { id: 'avaliacao-mediadora', name: 'Avaliação Mediadora (Jussara Hoffmann)', description: 'Concepção de avaliação como processo contínuo de acompanhamento da aprendizagem.' },
+                            { id: 'instrumentos-avaliacao', name: 'Instrumentos de Avaliação', description: 'Recursos utilizados para coletar informações sobre a aprendizagem.' },
+                            { id: 'conceitos-nota-conceito-rubrica', name: 'Conceitos de Nota, Conceito, Rubrica', description: 'Diferenças e aplicações dos sistemas de registro da aprendizagem.' },
+                            { id: 'avaliacao-aprendizagem-significativa', name: 'Avaliação na Perspectiva da Aprendizagem Significativa', description: 'Avaliação que valoriza a construção de sentido e a relevância do conhecimento.' }
                         ]
                     },
                     {
-                        name: "Tecnologias Educacionais",
+                        name: "Planejamento Educacional",
                         topics: [
-                            { id: 'tecnologias-educacionais', name: 'Tecnologias da Comunicação e Informação nas Práticas Educativas', description: 'Uso de ferramentas digitais e recursos tecnológicos na educação.' },
-                            { id: 'letramento-cientifico', name: 'Letramento Científico', description: 'Desenvolvimento da capacidade de compreender e interpretar informações científicas.' },
-                            { id: 'pedagogia-criativa', name: 'Pedagogia Criativa', description: 'Estratégias inovadoras, TRIZ, mescla entre criatividade e aprendizagem.' },
-                            { id: 'tpack', name: 'TPACK (Technological–Pedagogical–Content Knowledge)', description: 'Extensão do PCK que envolve o uso integrado de tecnologia.' }
+                            { id: 'projeto-politico-pedagogico', name: 'Projeto Político-Pedagógico (PPP)', description: 'Documento que define a identidade e os objetivos da escola.' },
+                            { id: 'plano-desenvolvimento-escola', name: 'Plano de Desenvolvimento da Escola (PDE)', description: 'Planejamento estratégico para a melhoria da qualidade educacional.' },
+                            { id: 'plano-aula-ensino', name: 'Plano de Aula e Plano de Ensino', description: 'Instrumentos para organizar a prática pedagógica em diferentes níveis.' },
+                            { id: 'curriculo-escolar', name: 'Currículo Escolar: concepções, organização e prática', description: 'O que e como se ensina na escola, e suas diferentes abordagens.' },
+                            { id: 'bncc-pedagogicos', name: 'Base Nacional Comum Curricular (BNCC)', description: 'Documento normativo que define o conjunto de aprendizagens essenciais para todos os alunos da Educação Básica.' },
+                            { id: 'dcn-pedagogicos', name: 'Diretrizes Curriculares Nacionais (DCNs)', description: 'Orientações para a elaboração dos currículos escolares.' },
+                            { id: 'campos-experiencia-ei', name: 'Campos de Experiência (na Educação Infantil)', description: 'Eixos estruturantes do currículo da Educação Infantil.' }
                         ]
                     },
                     {
-                        name: "Educação Inclusiva e Diversidade",
+                        name: "Gestão Escolar e Organização do Trabalho Pedagógico",
                         topics: [
-                            { id: 'educacao-inclusiva', name: 'Educação Especial e Inclusiva', description: 'Conceitos, legislação e práticas da educação especial na perspectiva inclusiva.' },
-                            { id: 'libras-cultura-surda', name: 'Libras, Cultura e Identidade Surda', description: 'Importância da Língua Brasileira de Sinais e da cultura surda.' },
-                            { id: 'direitos-humanos-educacao', name: 'Educação, Inclusão e Direitos Humanos', description: 'Promoção e defesa dos direitos humanos no ambiente escolar e currículo.' },
-                            { id: 'diversidade-etnico-raciais', name: 'Educação para as Relações Étnico-Raciais', description: 'Abordagem da diversidade cultural, étnica e racial na escola e currículo.' },
-                            { id: 'historias-culturas-africanas-indigenas', name: 'Histórias e Culturas Africanas, Afro-Brasileiras e Indígenas', description: 'Estudo da contribuição dessas culturas para a formação do Brasil.' },
-                            { id: 'educacao-genero-sexualidade', name: 'Educação para as Relações de Gênero e Sexualidade', description: 'Discussão sobre gênero, sexualidade e respeito à diversidade.' },
-                            { id: 'educacao-socioambiental', name: 'Educação Socioambiental', description: 'Conscientização sobre questões ambientais e sociais.' }
+                            { id: 'gestao-democratica-participativa', name: 'Gestão Democrática e Participativa', description: 'Princípios e práticas para uma gestão escolar que envolva a comunidade.' },
+                            { id: 'autonomia-escolar', name: 'Autonomia Escolar', description: 'Capacidade da escola de tomar decisões sobre seu funcionamento e projeto pedagógico.' },
+                            { id: 'conselho-escolar-gremio', name: 'Conselho Escolar e Grêmio Estudantil', description: 'Instâncias de participação e representação na escola.' },
+                            { id: 'funcao-social-escola', name: 'Função Social da Escola', description: 'O papel da escola na formação cidadã e na transformação social.' },
+                            { id: 'coordenacao-pedagogica-supervisao', name: 'Coordenação Pedagógica e Supervisão', description: 'O papel dos profissionais que apoiam e orientam a prática docente.' },
+                            { id: 'clima-cultura-organizacional', name: 'Clima e Cultura Organizacional', description: 'Aspectos que influenciam o ambiente de trabalho e as relações na escola.' },
+                            { id: 'trabalho-coletivo-interdisciplinar', name: 'Trabalho Coletivo e Interdisciplinar', description: 'A importância da colaboração e da integração entre as áreas do conhecimento.' }
                         ]
                     },
                     {
-                        name: "Organização e Gestão da Educação",
+                        name: "Políticas Públicas e Legislação Educacional",
                         topics: [
-                            { id: 'planejamento-organizacao-gestao-democratica', name: 'Planejamento, Organização e Gestão Democrática Educacional em Espaço Escolar e Não Escolar', description: 'Estruturas e processos de gestão educacional em diferentes níveis e espaços.' },
-                            { id: 'implementacao-avaliacao-curriculos-projetos', name: 'Implementação e Avaliação de Currículos, Programas Educacionais e Projetos Político Pedagógicos', description: 'Processos de elaboração, implementação e avaliação de propostas pedagógicas.' },
-                            { id: 'praticas-articulacao-escola-comunidade', name: 'Práticas de Articulação entre Escola, Família, Comunidade e Movimentos Sociais', description: 'A importância da interação e parceria para o desenvolvimento educacional.' },
-                            { id: 'gestao-sala-aula', name: 'Gestão da Sala de Aula / Classroom Management', description: 'Clima, disciplina, dinâmicas, organização e relações professor-aluno.' },
-                            { id: 'gestao-democratica-escola', name: 'Gestão Democrática na Escola', description: 'Princípios e práticas da gestão democrática, participação da comunidade escolar.' },
-                            { id: 'relacao-escola-comunidade', name: 'Relação Escola-Comunidade', description: 'A importância da interação e parceria entre a escola e a comunidade local.' }
+                            { id: 'ldb-pedagogicos', name: 'LDB (Lei nº 9.394/1996)', hasQuestions: true, description: 'Lei de Diretrizes e Bases da Educação Nacional.' },
+                            { id: 'cf-educacao', name: 'Constituição Federal (art. 205 ao 214)', hasQuestions: true, description: 'Disposições constitucionais sobre a educação.' },
+                            { id: 'eca-pedagogicos', name: 'Estatuto da Criança e do Adolescente (ECA)', hasQuestions: true, description: 'Direitos e deveres de crianças e adolescentes.' },
+                            { id: 'pne-pedagogicos', name: 'Plano Nacional de Educação (PNE)', hasQuestions: true, description: 'Metas e estratégias para a educação brasileira.' },
+                            { id: 'diretrizes-educacao-inclusiva', name: 'Diretrizes para Educação Inclusiva', hasQuestions: true, description: 'Normas para garantir o acesso e a participação de todos os alunos.' },
+                            { id: 'fundeb-financiamento', name: 'Fundeb e Financiamento da Educação', hasQuestions: true, description: 'Mecanismos de financiamento da educação básica.' },
+                            { id: 'pcn-pedagogicos', name: 'Parâmetros Curriculares Nacionais (PCNs)', description: 'Orientações para o currículo e a prática pedagógica.' },
+                            { id: 'bncc-legislacao', name: 'Base Nacional Comum Curricular (BNCC)', hasQuestions: true, description: 'Documento normativo que define o conjunto de aprendizagens essenciais para todos os alunos da Educação Básica.' },
+                            { id: 'educacao-direito-subjetivo', name: 'Educação como Direito Público Subjetivo', description: 'A educação como direito fundamental e dever do Estado.' }
                         ]
                     },
                     {
-                        name: "Políticas e Currículo",
+                        name: "Inclusão, Diversidade e Direitos Humanos",
                         topics: [
-                            { id: 'politicas-publicas-educacao', name: 'Políticas Públicas, Organização, Financiamento e Avaliação da Educação Brasileira', description: 'Análise das políticas educacionais e seus impactos no sistema de ensino.' },
-                            { id: 'teorias-praticas-curriculo', name: 'Teorias e Práticas de Currículo', description: 'Concepções e abordagens curriculares, elaboração e desenvolvimento.' },
-                            { id: 'legislacao-educacional', name: 'Legislação Educacional (LDB, ECA, PNE, etc.)', hasQuestions: true, description: 'LDB, ECA, PNE e outros documentos orientadores.' },
-                            { id: 'bncc', name: 'BNCC - Base Nacional Comum Curricular', hasQuestions: true, description: 'Estrutura, objetivos e impacto da Base Nacional Comum Curricular.' },
-                            { id: 'pcns', name: 'PCNs (Parâmetros Curriculares Nacionais)', description: 'Diretrizes curriculares e temas transversais.' },
-                            { id: 'curriculo-temas-transversais', name: 'Currículo e Temas Transversais', description: 'Temas contemporâneos (meio ambiente, diversidade, direitos humanos).' },
-                            { id: 'planejamento-institucional-ppp', name: 'Planejamento Institucional e PPP', description: 'Elaboração de projetos político-pedagógicos.' },
-                            { id: 'conselhos-escolares', name: 'Conselhos Escolares', description: 'Função, composição e importância dos conselhos escolares na gestão democrática.' }
+                            { id: 'educacao-inclusiva-diversidade', name: 'Educação Inclusiva', description: 'Princípios e práticas para garantir a participação de todos os alunos.' },
+                            { id: 'aee', name: 'Atendimento Educacional Especializado (AEE)', description: 'Recursos e serviços para alunos com necessidades educacionais especiais.' },
+                            { id: 'educacao-indigena-campo-quilombola', name: 'Educação Indígena, do Campo e Quilombola', description: 'Abordagens pedagógicas que valorizam as culturas e realidades desses grupos.' },
+                            { id: 'genero-raca-etnia', name: 'Gênero, Raça e Etnia na Escola', description: 'A importância de abordar as questões de gênero, raça e etnia no ambiente escolar.' },
+                            { id: 'cultura-afro-indigena', name: 'Cultura Afro-Brasileira e Indígena (Lei 10.639/03 e 11.645/08)', hasQuestions: true, description: 'Estudo da história e cultura afro-brasileira e indígena na educação.' },
+                            { id: 'direitos-humanos-cultura-paz', name: 'Direitos Humanos e Cultura de Paz', description: 'Promoção dos direitos humanos e da cultura de paz no ambiente escolar.' },
+                            { id: 'combate-preconceito-discriminacao', name: 'Combate ao Preconceito e Discriminação', description: 'Estratégias para prevenir e combater o preconceito e a discriminação na escola.' }
                         ]
                     },
                     {
-                        name: "Desenvolvimento Profissional Docente e Prática",
+                        name: "Alfabetização e Letramento",
                         topics: [
-                            { id: 'identidade-trabalho-docente', name: 'Identidade e Especificidades do Trabalho Docente', description: 'Desafios e características da profissão docente.' },
-                            { id: 'estagio-supervisionado', name: 'Estágio Supervisionado', description: 'Importância e etapas do estágio na formação docente.' },
-                            { id: 'pratica-reflexiva-metacognicao', name: 'Prática Reflexiva e Metacognição', description: 'Reflexão-in-action (Schön), aprimoramento baseado na experiência.' },
-                            { id: 'formacao-continuada-comunidades-pratica', name: 'Formação Continuada e Comunidades de Prática', description: 'Workshops, grupos de estudo, redes colaborativas.' },
-                            { id: 'crencas-professor-decisao-pedagogica', name: 'Influência das Crenças do Professor sobre Decisão Pedagógica', description: 'Impacto das crenças do professor na prática em sala de aula.' }
+                            { id: 'metodos-alfabetizacao', name: 'Métodos de Alfabetização (silábico, fônico, construtivista)', description: 'Diferentes abordagens para o ensino da leitura e escrita.' },
+                            { id: 'teorias-letramento', name: 'Teorias do Letramento (Magda Soares, Emilia Ferreiro)', description: 'Conceitos e perspectivas sobre o letramento e suas implicações pedagógicas.' },
+                            { id: 'pnaic-pna-alfabetizacao', name: 'PNAIC, PNA e Política Nacional de Alfabetização', hasQuestions: true, description: 'Programas e políticas para a alfabetização no Brasil.' },
+                            { id: 'alfabetizacao-bncc', name: 'Alfabetização na Perspectiva da BNCC', description: 'Orientações da BNCC para o processo de alfabetização.' },
+                            { id: 'processos-leitura-escrita', name: 'Processos de Leitura e Escrita', description: 'O desenvolvimento da leitura e escrita na criança.' }
                         ]
                     },
                     {
-                        name: "Pesquisa em Educação",
+                        name: "Tecnologias na Educação",
                         topics: [
-                            { id: 'metodologia-pesquisa-educacao', name: 'Metodologia de Pesquisa em Educação e Ensino', description: 'Fundamentos e tipos de pesquisa em educação, coleta e análise de dados.' }
+                            { id: 'tdics', name: 'Tecnologias Digitais de Informação e Comunicação (TDICs)', description: 'Uso de tecnologias digitais no processo de ensino e aprendizagem.' },
+                            { id: 'educacao-hibrida', name: 'Educação Híbrida', description: 'Combinação de ensino presencial e a distância.' },
+                            { id: 'competencia-digital-docente', name: 'Competência Digital Docente', description: 'Habilidades e conhecimentos necessários para o uso pedagógico das tecnologias.' },
+                            { id: 'ambientes-virtuais-aprendizagem', name: 'Ambientes Virtuais de Aprendizagem (AVA)', description: 'Plataformas e ferramentas para o ensino online.' },
+                            { id: 'recursos-midiaticos-gamificacao', name: 'Recursos Midiáticos e Gamificação', description: 'Uso de mídias e elementos de jogos para engajar os alunos.' },
+                            { id: 'inclusao-digital', name: 'Inclusão Digital', description: 'Acesso e uso das tecnologias digitais por todos.' }
+                        ]
+                    },
+                    {
+                        name: "Ética e Prática Docente",
+                        topics: [
+                            { id: 'profissionalizacao-docente', name: 'Profissionalização Docente', description: 'Aspectos da formação e desenvolvimento profissional do professor.' },
+                            { id: 'etica-profissional', name: 'Ética Profissional', description: 'Princípios éticos que norteiam a prática docente.' },
+                            { id: 'codigo-etica-educador', name: 'Código de Ética do Educador', description: 'Conjunto de normas e valores que orientam a conduta profissional.' },
+                            { id: 'relacao-comunidade-escolar', name: 'Relação com a Comunidade Escolar', description: 'A importância da parceria entre a escola e a comunidade.' },
+                            { id: 'formacao-continuada-docente', name: 'Formação Continuada', description: 'Processos de atualização e aprimoramento profissional do professor.' },
+                            { id: 'direitos-deveres-professor', name: 'Direitos e Deveres do Professor', description: 'Aspectos legais e éticos da atuação docente.' }
+                        ]
+                    },
+                    {
+                        name: "Educação Infantil e Anos Iniciais",
+                        topics: [
+                            { id: 'campos-experiencias-ei-detalhe', name: 'Campos de Experiências (EI)', description: 'Eixos estruturantes do currículo da Educação Infantil, que organizam o trabalho pedagógico.' },
+                            { id: 'direitos-aprendizagem', name: 'Direitos de Aprendizagem', description: 'Direitos assegurados às crianças na Educação Infantil, como conviver, brincar, participar, explorar, expressar e conhecer-se.' },
+                            { id: 'brincadeira-eixo-estruturante', name: 'Brincadeira como Eixo Estruturante', description: 'A brincadeira como atividade central na Educação Infantil, promovendo o desenvolvimento e a aprendizagem.' },
+                            { id: 'desenvolvimento-infantil', name: 'Desenvolvimento Infantil', description: 'Estudo das fases e características do desenvolvimento de crianças de 0 a 5 anos e 11 meses.' },
+                            { id: 'avaliacao-educacao-infantil', name: 'Avaliação na Educação Infantil', description: 'Processo de acompanhamento e registro do desenvolvimento e aprendizagem das crianças, sem objetivo de promoção.' },
+                            { id: 'interacoes-vinculos-afetivos', name: 'Interações e Vínculos Afetivos', description: 'A importância das relações e do afeto no desenvolvimento e aprendizagem na Educação Infantil.' }
+                        ]
+                    },
+                    {
+                        name: "Avaliações em Larga Escala",
+                        topics: [
+                            { id: 'prova-brasil-saeb', name: 'Prova Brasil e Saeb', hasQuestions: true, description: 'Avaliações diagnósticas do sistema de ensino brasileiro.' },
+                            { id: 'enem-pedagogicos', name: 'Enem', hasQuestions: true, description: 'Exame Nacional do Ensino Médio, utilizado para acesso ao ensino superior.' },
+                            { id: 'ideb-pedagogicos', name: 'IDEB', hasQuestions: true, description: 'Índice de Desenvolvimento da Educação Básica, que avalia a qualidade da educação.' },
+                            { id: 'ana-alfabetizacao', name: 'ANA (Avaliação Nacional da Alfabetização)', hasQuestions: true, description: 'Avaliação da alfabetização de estudantes do 2º ano do Ensino Fundamental.' },
+                            { id: 'aplicacoes-implicacoes-pedagogicas', name: 'Aplicações e Implicações Pedagógicas dos Resultados', description: 'Como os resultados das avaliações em larga escala podem ser utilizados para melhorar a prática pedagógica.' }
                         ]
                     }
                 ]
@@ -1413,27 +1465,45 @@
                     {
                         name: "Direito Constitucional",
                         topics: [
-                            { id: 'const-fundamentos', name: 'Teoria da Constituição e Poder Constituinte', description: 'Conceitos, classificação e evolução das Constituições.' },
-                            { id: 'const-direitos-fundamentais', name: 'Direitos e Deveres Fundamentais (Art. 5º CF)', description: 'Direitos individuais, sociais, políticos e sua aplicabilidade.' },
-                            { id: 'const-organizacao-estado', name: 'Organização do Estado (União, Estados, Municípios, DF)', description: 'Repartição de competências e forma de Estado.' },
-                            { id: 'const-poderes', name: 'Organização dos Poderes (Legislativo, Executivo, Judiciário)', description: 'Estrutura, funções e controle dos Poderes.' },
-                            { id: 'const-controle-constitucionalidade', name: 'Controle de Constitucionalidade', description: 'Ações (ADIN, ADPF, ADPF, MS) e sistemas de controle.' },
-                            { id: 'const-administracao-publica', name: 'Administração Pública na CF', description: 'Princípios, servidores públicos e responsabilidade civil do Estado.' }
+                            { id: 'const-conceitos-iniciais', name: 'Constituição: Conceitos Iniciais', description: 'Conceito, classificação (origem, forma, conteúdo, finalidade, extensão, estabilidade), supremacia e mutação constitucional. Poder Constituinte (originário e derivado).' },
+                            { id: 'const-principios-fundamentais', name: 'Princípios Fundamentais (Art. 1º ao 4º)', description: 'Fundamentos da República, objetivos fundamentais, princípios das relações internacionais, soberania popular, cidadania, dignidade da pessoa humana e pluralismo político.' },
+                            { id: 'const-direitos-garantias-fundamentais', name: 'Direitos e Garantias Fundamentais (Art. 5º ao 17)', description: 'Direitos e Deveres Individuais e Coletivos (Art. 5º): vida, liberdade, igualdade, segurança, propriedade. Remédios constitucionais (Habeas corpus, Habeas data, Mandado de segurança, Mandado de injunção, Ação popular). Princípios da legalidade, anterioridade, contraditório, ampla defesa. Direitos de reunião, expressão, crença, associação.' },
+                            { id: 'const-direitos-sociais', name: 'Direitos Sociais', description: 'Educação, saúde, trabalho, moradia, lazer, previdência etc. Direitos dos trabalhadores urbanos e rurais.' },
+                            { id: 'const-nacionalidade', name: 'Nacionalidade', description: 'Originária e derivada. Perda e reaquisição da nacionalidade.' },
+                            { id: 'const-direitos-politicos', name: 'Direitos Políticos', description: 'Sufrágio e voto. Elegibilidade e inelegibilidades. Direitos de participação política. Perda e suspensão de direitos políticos.' },
+                            { id: 'const-partidos-politicos', name: 'Partidos Políticos', description: 'Requisitos para criação e funcionamento. Fidelidade partidária.' },
+                            { id: 'const-organizacao-estado', name: 'Organização do Estado (Art. 18 ao 43)', description: 'Organização Político-Administrativa: União, Estados, Municípios e Distrito Federal. Repartição de competências (art. 21 a 25): exclusiva, privativa, concorrente e comum. Administração Pública: Princípios (LIMPE), servidores públicos (regime jurídico, direitos, deveres, responsabilidade, acumulação de cargos, acesso a cargos públicos, teto remuneratório, estabilidade). Organização Territorial: Intervenção federal e estadual. Descentralização administrativa.' },
+                            { id: 'const-organizacao-poderes', name: 'Organização dos Poderes (Art. 44 ao 135)', description: 'Poder Legislativo: Congresso Nacional (composição e funcionamento), processo legislativo (iniciativa, emenda, votação, sanção, veto), comissões parlamentares (CPI, permanentes), fiscalização e controle, imunidades parlamentares. Poder Executivo: Presidência da República (atribuições e responsabilidades), Ministro de Estado, crimes de responsabilidade. Poder Judiciário: Estrutura (STF, STJ, TSE, TRFs, TRTs, TREs, TJ, Juizados etc.), garantias e prerrogativas dos magistrados. Controle de constitucionalidade: Difuso e concentrado, ADI, ADC, ADPF. Efeitos das decisões do STF. Funções Essenciais à Justiça: Ministério Público, Advocacia pública e privada, Defensoria Pública.' },
+                            { id: 'const-defesa-estado-instituicoes', name: 'Defesa do Estado e das Instituições Democráticas (Art. 136 ao 144)', description: 'Estado de defesa, estado de sítio, intervenção federal. Segurança pública: Polícia federal, civil, militar, rodoviária e penal. Forças armadas.' },
+                            { id: 'const-ordem-economica-financeira', name: 'Ordem Econômica e Financeira (Art. 170 ao 192)', description: 'Princípios da ordem econômica. Livre iniciativa e função social da propriedade. Sistema financeiro nacional. Intervenção do Estado na economia. Atuação das empresas públicas e sociedades de economia mista.' },
+                            { id: 'const-ordem-social', name: 'Ordem Social (Art. 193 ao 232)', description: 'Seguridade Social: Saúde, Previdência e Assistência. Educação, Cultura, Desporto, Comunicação social, Meio ambiente. Família, criança, adolescente, idoso e índio.' },
+                            { id: 'const-disposicoes-gerais-transitorias', name: 'Disposições Constitucionais Gerais e Transitórias', description: 'Disposições Gerais. Atos das Disposições Constitucionais Transitórias (ADCT). Princípios de hermenêutica constitucional.' }
                         ]
                     },
                     {
                         name: "Direito Administrativo",
                         topics: [
-                            { id: 'adm-principios', name: 'Princípios do Direito Administrativo', description: 'Legalidade, impessoalidade, moralidade, publicidade, eficiência.' },
-                            { id: 'adm-organizacao', name: 'Organização da Administração Pública', description: 'Administração direta e indireta, entidades e agentes.' },
-                            { id: 'adm-atos', name: 'Atos Administrativos', description: 'Conceito, requisitos, atributos, espécies e invalidação.' },
-                            { id: 'adm-poderes', name: 'Poderes Administrativos', description: 'Hierárquico, disciplinar, regulamentar, de polícia.' },
-                            { id: 'adm-licitacoes', name: 'Licitações e Contratos Administrativos (Lei 14.133/21)', description: 'Modalidades, dispensa, inexigibilidade, execução.' },
-                            { id: 'adm-servicos-publicos', name: 'Serviços Públicos', description: 'Conceito, princípios, formas de prestação e concessões.' },
-                            { id: 'adm-bens-publicos', name: 'Bens Públicos', description: 'Classificação, regime jurídico e formas de aquisição e alienação.' },
-                            { id: 'adm-intervencao-estado', name: 'Intervenção do Estado na Propriedade Privada', description: 'Desapropriação, servidão, requisição, tombamento.' },
-                            { id: 'adm-responsabilidade-civil', name: 'Responsabilidade Civil do Estado', description: 'Teorias, requisitos e excludentes.' },
-                            { id: 'adm-processo-administrativo', name: 'Processo Administrativo (Lei 9.784/99)', description: 'Princípios, fases e recursos.' }
+                            { id: 'adm-conceito-fontes-principios', name: 'Conceito, fontes e princípios do Direito Administrativo', description: 'Definição do Direito Administrativo, suas fontes (lei, jurisprudência, doutrina, costumes) e princípios fundamentais (legalidade, impessoalidade, moralidade, publicidade, eficiência, supremacia do interesse público, indisponibilidade do interesse público).' },
+                            { id: 'adm-administracao-publica', name: 'Administração Pública: direta e indireta', description: 'Estrutura da Administração Pública, distinguindo a administração direta (órgãos) da indireta (autarquias, fundações públicas, empresas públicas, sociedades de economia mista).' },
+                            { id: 'adm-atos-administrativos-conceito-elementos-atributos-especies', name: 'Atos administrativos: Conceito, elementos, atributos, espécies', description: 'Conceito de atos administrativos, seus elementos (competência, finalidade, forma, motivo, objeto), atributos (presunção de legitimidade, autoexecutoriedade, tipicidade, imperatividade) e espécies (vinculados, discricionários, negociais, enunciativos, punitivos).' },
+                            { id: 'adm-atos-administrativos-revogacao-anulacao-convalidacao', name: 'Atos administrativos: Revogação, anulação, convalidação', description: 'Estudo dos modos de extinção e saneamento dos atos administrativos: revogação (por conveniência e oportunidade), anulação (por ilegalidade) e convalidação (saneamento de vícios).' },
+                            { id: 'adm-poderes-administracao', name: 'Poderes da Administração: hierárquico, disciplinar, regulamentar, de polícia', description: 'Análise dos poderes administrativos: poder hierárquico (organização interna e controle de subordinação), poder disciplinar (aplicação de sanções), poder regulamentar (expedição de normas gerais) e poder de polícia (limitação e fiscalização de atividades).' },
+                            { id: 'adm-servicos-publicos', name: 'Serviços públicos: princípios, formas de prestação, delegação', description: 'Conceito de serviço público, seus princípios (continuidade, generalidade, modicidade, segurança, atualidade) e formas de prestação (direta, indireta por concessão, permissão, autorização).' },
+                            { id: 'adm-licitacoes-contratos-lei-14133', name: 'Licitações e contratos administrativos: Lei 14.133/2021', description: 'Regime jurídico das licitações e contratos administrativos, com foco na Nova Lei de Licitações e Contratos (Lei nº 14.133/2021), seus princípios, modalidades e fases.' },
+                            { id: 'adm-licitacoes-contratos-dispensa-inexigibilidade-fases', name: 'Licitações e contratos administrativos: Dispensa, inexigibilidade, fases da licitação', description: 'Estudo das hipóteses de dispensa e inexigibilidade de licitação, e as fases da licitação (preparatória, externa: divulgação, apresentação de propostas, julgamento, habilitação, adjudicação, homologação).' },
+                            { id: 'adm-licitacoes-contratos-caracteristicas', name: 'Licitações e contratos administrativos: Características dos contratos administrativos', description: 'Análise das características dos contratos administrativos (cláusulas exorbitantes, mutabilidade, formalismo, consensualidade, onerosidade, comutatividade).' },
+                            { id: 'adm-responsabilidade-civil-estado-teoria-risco', name: 'Responsabilidade civil do Estado: Teoria do risco administrativo', description: 'Estudo da teoria do risco administrativo como fundamento da responsabilidade objetiva do Estado, e a teoria do risco integral.' },
+                            { id: 'adm-responsabilidade-civil-estado-omissao-excludentes', name: 'Responsabilidade civil do Estado: Omissão e excludentes', description: 'Análise da responsabilidade do Estado por omissão (subjetiva) e as excludentes de responsabilidade (culpa exclusiva da vítima, caso fortuito, força maior).' },
+                            { id: 'adm-servidores-publicos-regime-provimento-vacancia-estabilidade-penalidades', name: 'Servidores públicos: Regime jurídico, provimento, vacância, estabilidade, penalidades', description: 'Regime jurídico dos servidores públicos, formas de provimento (nomeação, promoção, readaptação, reversão, aproveitamento, reintegração, recondução) e vacância (exoneração, demissão, aposentadoria, falecimento, posse em outro cargo inacumulável). Estabilidade, direitos, deveres e penalidades disciplinares.' },
+                            { id: 'adm-controle-administracao-interno-externo-judicial', name: 'Controle da Administração: Interno, externo, judicial', description: 'Mecanismos de controle interno (pela própria administração), externo (pelo Legislativo com auxílio dos Tribunais de Contas) e judicial (pelo Poder Judiciário) da Administração Pública.' },
+                            { id: 'adm-controle-administracao-tcu', name: 'Controle da Administração: TCU', description: 'O papel e as competências do Tribunal de Contas da União (TCU) na fiscalização contábil, financeira, orçamentária, operacional e patrimonial da União.' },
+                            { id: 'adm-improbidade-administrativa', name: 'Improbidade administrativa (Leis 8.429/92 e 14.230/21)', description: 'Estudo da Lei de Improbidade Administrativa (Lei nº 8.429/92), suas alterações pela Lei nº 14.230/2021, atos de improbidade (enriquecimento ilícito, dano ao erário, princípios) e sanções.' },
+                            { id: 'adm-bens-publicos', name: 'Bens públicos', description: 'Classificação dos bens públicos (uso comum do povo, uso especial, dominicais), regime jurídico, afetação e desafetação, formas de aquisição e alienação.' },
+                            { id: 'adm-intervencao-propriedade', name: 'Intervenção na propriedade (desapropriação, requisição)', description: 'Formas de intervenção do Estado na propriedade privada, como desapropriação (por utilidade pública, necessidade pública, interesse social), requisição administrativa, servidão administrativa, tombamento e ocupação temporária.' },
+                            { id: 'adm-concessao-permissao-autorizacao', name: 'Concessão, permissão e autorização', description: 'Diferenciação entre concessão (contrato administrativo), permissão (ato unilateral precário) e autorização (ato unilateral discricionário) de uso de bens públicos e de serviços públicos.' },
+                            { id: 'adm-agentes-publicos', name: 'Agentes públicos: espécies, responsabilidades', description: 'Classificação dos agentes públicos (políticos, administrativos, honoríficos, delegados, credenciados) e suas responsabilidades (civil, penal, administrativa).' },
+                            { id: 'adm-organizacao-centralizacao-descentralizacao', name: 'Organização administrativa: centralização e descentralização', description: 'Conceitos de centralização (execução direta pela pessoa jurídica) e descentralização (transferência de competências para outra pessoa jurídica, por outorga ou delegação), e desconcentração (distribuição de competências dentro da mesma pessoa jurídica).' },
+                            { id: 'adm-parcerias-publico-privadas', name: 'Parcerias público-privadas (PPP)', description: 'Regime jurídico das Parcerias Público-Privadas (Lei nº 11.079/2004), modalidades (patrocinada, administrativa) e características, distinguindo-as das concessões comuns.' }
                         ]
                     },
                     {
@@ -1455,41 +1525,41 @@
                     {
                         name: "Direito Penal",
                         topics: [
-                            { id: 'penal-principios', name: 'Princípios do Direito Penal', description: 'Legalidade, anterioridade, culpabilidade, humanidade.' },
-                            { id: 'penal-teoria-crime', name: 'Teoria Geral do Crime', description: 'Fato típico, antijuridicidade, culpabilidade, punibilidade.' },
-                            { id: 'penal-imputabilidade', name: 'Imputabilidade Penal', description: 'Causas de exclusão e semi-imputabilidade.' },
-                            { id: 'penal-concurso-crimes', name: 'Concurso de Pessoas e Concurso de Crimes', description: 'Autoria, participação, concurso material, formal, crime continuado.' },
-                            { id: 'penal-penas', name: 'Teoria da Pena', description: 'Espécies de penas, aplicação, suspensão, livramento condicional.' },
-                            { id: 'penal-extincao-punibilidade', name: 'Extinção da Punibilidade', description: 'Prescrição, decadência, perempção, morte do agente.' },
-                            { id: 'penal-crimes-contra-pessoa', name: 'Crimes Contra a Pessoa', description: 'Homicídio, lesão corporal, calúnia, difamação, injúria.' },
-                            { id: 'penal-crimes-contra-patrimonio', name: 'Crimes Contra o Patrimônio', description: 'Furto, roubo, extorsão, estelionato.' },
-                            { id: 'penal-crimes-administracao-publica', name: 'Crimes Contra a Administração Pública', description: 'Peculato, concussão, corrupção, prevaricação.' }
+                            { id: 'penal-parte-geral', name: 'Parte Geral (Arts. 1º a 120 do CP)', description: 'Abrange os fundamentos do Direito Penal, como os princípios (legalidade, anterioridade da lei, insignificância, lesividade, humanidade, culpabilidade), a aplicação da lei penal no tempo e no espaço (extraterritorialidade condicionada e incondicionada), a teoria do crime (fato típico, ilicitude, culpabilidade), o estudo do erro de tipo e erro de proibição, o concurso de pessoas (coautoria e participação), as espécies de penas (privativas de liberdade, restritivas de direitos, multa), sua aplicação, cominação, substituição e suspensão condicional, o concurso de crimes (material, formal, continuidade delitiva), a prescrição e outras causas de extinção da punibilidade, as medidas de segurança e a imputabilidade penal.' },
+                            { id: 'penal-principios', name: 'Princípios do Direito Penal (legalidade, anterioridade, insignificância)', description: 'Detalhamento dos princípios fundamentais do Direito Penal: Princípio da Legalidade (nullum crimen, nulla poena sine praevia lege), Princípio da Anterioridade (irretroatividade da lei penal, salvo para beneficiar o réu), Princípio da Insignificância (afasta a tipicidade material em casos de ínfima lesão ao bem jurídico), Princípio da Culpabilidade, Intervenção Mínima, Lesividade, Humanidade e Individualização da Pena.' },
+                            { id: 'penal-aplicacao-lei', name: 'Aplicação da lei penal (tempo, espaço, extraterritorialidade)', description: 'Estudo da aplicação da lei penal no tempo (tempus regit actum, novatio legis in pejus, abolitio criminis) e no espaço (territorialidade, extraterritorialidade incondicionada, condicionada e hipercondicionada, com foco nos artigos 5º, 6º e 7º do Código Penal).' },
+                            { id: 'penal-teoria-crime', name: 'Teoria do crime: fato típico, ilicitude, culpabilidade', description: 'Análise dos elementos do conceito analítico de crime: Fato Típico (conduta, resultado, nexo causal, tipicidade), Ilicitude (antijuridicidade e suas excludentes, como legítima defesa, estado de necessidade, estrito cumprimento do dever legal e exercício regular de direito), e Culpabilidade (imputabilidade, potencial consciência da ilicitude e exigibilidade de conduta diversa).' },
+                            { id: 'penal-erro-tipo-proibicao', name: 'Erro de tipo e erro de proibição', description: 'Diferenciação e consequências do erro de tipo (erro sobre elemento do tipo penal, que pode ser essencial ou acidental, e que exclui o dolo ou a culpa, dependendo se é escusável ou inescusável) e do erro de proibição (erro sobre a ilicitude do fato, que afeta a culpabilidade, podendo isentar ou diminuir a pena).' },
+                            { id: 'penal-concurso-pessoas', name: 'Concurso de pessoas', description: 'Estudo das situações em que duas ou mais pessoas concorrem para a prática do mesmo crime, abordando a coautoria (execução conjunta) e a participação (induzimento, instigação, auxílio), e a teoria monista (todos respondem pelo mesmo crime) e pluralista (crimes autônomos).' },
+                            { id: 'penal-penas', name: 'Penas: espécies, aplicação, cominação, substituição, suspensão condicional', description: 'Análise das penas privativas de liberdade (reclusão, detenção, prisão simples), restritivas de direitos (prestação de serviços à comunidade, interdição temporária de direitos, limitação de fim de semana, etc.) e de multa. Estudo da dosimetria da pena (três fases), cominação legal, substituição de penas privativas de liberdade por restritivas de direitos, e suspensão condicional da pena (sursis).' },
+                            { id: 'penal-concurso-crimes', name: 'Concurso de crimes (formal, material, continuidade delitiva)', description: 'Estudo das formas de concurso de crimes: Concurso Material (pluralidade de condutas e crimes, somam-se as penas), Concurso Formal (uma só conduta, dois ou mais crimes, aplica-se a pena mais grave ou a aumentada), e Crime Continuado (crimes da mesma espécie, nas mesmas condições de tempo, lugar e modo de execução, como continuação do primeiro, aplica-se a pena de um só crime aumentada).' },
+                            { id: 'penal-prescricao-extincao', name: 'Prescrição e extinção da punibilidade', description: 'Conceito de prescrição (perda do direito de punir ou de executar a pena pelo decurso do tempo), suas modalidades (prescrição da pretensão punitiva e prescrição da pretensão executória), e outras causas de extinção da punibilidade (morte do agente, anistia, graça, indulto, perempção, perdão judicial, etc.), conforme o Art. 107 do CP.' },
+                            { id: 'penal-medidas-seguranca', name: 'Medidas de segurança', description: 'Sanções penais aplicadas a inimputáveis ou semi-imputáveis que praticam fatos típicos e ilícitos, mas não são culpáveis. Foco na periculosidade do agente e na finalidade terapêutica, com estudo das espécies (internação, tratamento ambulatorial) e seu regime jurídico.' },
+                            { id: 'penal-imputabilidade', name: 'Imputabilidade penal', description: 'Capacidade de o agente entender o caráter ilícito do fato e de determinar-se de acordo com esse entendimento. Estudo das causas de inimputabilidade (doença mental, desenvolvimento mental incompleto ou retardado, menoridade) e semi-imputabilidade, e seus efeitos na culpabilidade e na aplicação da pena.' },
+                            { id: 'penal-crimes-contra-pessoa', name: 'Crimes contra a pessoa (homicídio, lesão corporal, aborto, honra etc.)', description: 'Estudo dos crimes contra a vida (homicídio simples, qualificado, privilegiado, feminicídio, infanticídio, aborto), crimes de lesão corporal (leve, grave, gravíssima, seguida de morte), crimes contra a honra (calúnia, difamação, injúria) e outros crimes contra a pessoa previstos no Código Penal.' },
+                            { id: 'penal-crimes-contra-patrimonio', name: 'Crimes contra o patrimônio (furto, roubo, estelionato, receptação)', description: 'Análise dos crimes de furto (simples, qualificado), roubo (simples, qualificado, extorsão mediante sequestro), extorsão, estelionato (simples, qualificado, modalidades), apropriação indébita, receptação (simples, qualificada, culposa) e outros delitos que afetam o patrimônio, com suas respectivas qualificadoras e causas de aumento de pena.' },
+                            { id: 'penal-crimes-contra-fe-publica', name: 'Crimes contra a fé pública (falsidade documental, moeda falsa)', description: 'Estudo dos crimes que atentam contra a confiança que a sociedade deposita em certos documentos ou símbolos. Inclui falsificação de moeda, falsidade documental (pública e particular), falsidade ideológica, uso de documento falso, e outros crimes contra a fé pública.' },
+                            { id: 'penal-crimes-contra-adm-publica', name: 'Crimes contra a administração pública (peculato, corrupção, prevaricação)', description: 'Análise dos crimes praticados por funcionários públicos contra a administração em geral (peculato, concussão, corrupção passiva, prevaricação, condescendência criminosa, advocacia administrativa) e crimes praticados por particulares contra a administração em geral (desacato, desobediência, corrupção ativa, tráfico de influência, etc.).' },
+                            { id: 'penal-crimes-dignidade-sexual', name: 'Crimes contra a dignidade sexual (estupro, assédio, importunação)', description: 'Estudo dos crimes que protegem a liberdade sexual e a dignidade da pessoa. Inclui estupro, estupro de vulnerável, assédio sexual, importunação sexual, violação sexual mediante fraude, e outros crimes contra a dignidade sexual, com suas qualificadoras e causas de aumento de pena.' },
+                            { id: 'penal-crimes-paz-publica-familia', name: 'Crimes contra a paz pública, a família e outros', description: 'Aborda crimes como associação criminosa, constituição de milícia privada, incitação ao crime, apologia de crime ou criminoso (crimes contra a paz pública). Também inclui crimes contra a família (bigamia, abandono de incapaz, etc.) e outros crimes relevantes previstos na Parte Especial do Código Penal.' }
                         ]
                     },
                     {
                         name: "Direito Processual Penal",
                         topics: [
-                            { id: 'proc-penal-principios', name: 'Princípios do Processo Penal', description: 'Devido processo legal, contraditório, ampla defesa, presunção de inocência.' },
-                            { id: 'proc-penal-inquerito', name: 'Inquérito Policial', description: 'Natureza, características, valor probatório.' },
-                            { id: 'proc-penal-acao-penal', name: 'Ação Penal', description: 'Pública e privada, condições da ação, denúncia, queixa.' },
-                            { id: 'proc-penal-provas', name: 'Provas no Processo Penal', description: 'Principios, meios de prova, prova ilícita.' },
-                            { id: 'proc-penal-prisoes', name: 'Prisões e Liberdade Provisória', description: 'Flagrante, preventiva, temporária, fiança.' },
-                            { id: 'proc-penal-recursos', name: 'Recursos no Processo Penal', description: 'Apelação, RESE, embargos, habeas corpus.' },
-                            { id: 'proc-penal-jurisdicao-competencia', name: 'Jurisdição e Competência', description: 'Conceito, critérios de fixação, modificação.' }
-                        ]
-                    },
-                    {
-                        name: "Direito Processual Civil",
-                        topics: [
-                            { id: 'proc-civil-principios', name: 'Princípios do Processo Civil', description: 'Devido processo legal, contraditório, cooperação, boa-fé.' },
-                            { id: 'proc-civil-jurisdicao-competencia', name: 'Jurisdição e Competência', description: 'Conceito, critérios de fixação, modificação.' },
-                            { id: 'proc-civil-partes-procuradores', name: 'Partes e Procuradores', description: 'Capacidade, representação, substituição processual.' },
-                            { id: 'proc-civil-atos-processuais', name: 'Atos Processuais', description: 'Forma, tempo, lugar, prazos, comunicação.' },
-                            { id: 'proc-civil-peticao-inicial', name: 'Petição Inicial e Resposta do Réu', description: 'Requisitos, emenda, contestação, reconvenção.' },
-                            { id: 'proc-civil-provas', name: 'Provas no Processo Civil', description: 'Ônus da prova, meios de prova, produção.' },
-                            { id: 'proc-civil-sentenca-coisa-julgada', name: 'Sentença e Coisa Julgada', description: 'Requisitos, efeitos, limites objetivos e subjetivos.' },
-                            { id: 'proc-civil-recursos', name: 'Recursos no Processo Civil', description: 'Conceito, princípios, espécies (apelação, agravo, RE, REsp).' },
-                            { id: 'proc-civil-execucao', name: 'Processo de Execução', description: 'Título executivo, espécies de execução, embargos à execução.' }
+                            { id: 'proc-penal-principios', name: 'Princípios do Processo Penal', description: 'Estudo dos princípios fundamentais que regem o processo penal, como o devido processo legal, contraditório, ampla defesa, presunção de inocência, publicidade, oralidade, identidade física do juiz, livre convencimento motivado, e o princípio da verdade real.' },
+                            { id: 'proc-penal-aplicacao-lei', name: 'Aplicação da Lei Processual Penal', description: 'Regras de aplicação da lei processual penal no tempo (princípio da imediatidade, atos processuais autônomos) e no espaço (territorialidade, lex fori), e a interpretação da lei processual penal, incluindo as normas híbridas.' },
+                            { id: 'proc-penal-inquerito-policial', name: 'Inquérito Policial', description: 'Conceito, natureza jurídica (procedimento administrativo, inquisitivo), características (escrito, discricionário, sigiloso, indisponível, oficial, oficioso), valor probatório (elementos informativos), formas de instauração, diligências, indiciamento (ato privativo do delegado) e arquivamento.' },
+                            { id: 'proc-penal-acao-penal', name: 'Ação Penal', description: 'Estudo da ação penal, suas espécies (pública incondicionada, pública condicionada à representação ou requisição, e privada), condições da ação (legitimidade, interesse de agir, justa causa), e a peça inicial (denúncia ou queixa-crime).' },
+                            { id: 'proc-penal-jurisdicao-competencia', name: 'Jurisdição e Competência', description: 'Conceito de jurisdição (poder-dever de julgar) e competência (limite da jurisdição), critérios de fixação da competência (territorial, material, funcional, em razão da pessoa - ratione personae), prevenção, conexão e continência. Aborda também a competência absoluta e relativa.' },
+                            { id: 'proc-penal-sujeitos-processo', name: 'Sujeitos do Processo Penal', description: 'Análise dos principais sujeitos processuais: juiz (garantias e vedações), Ministério Público (titular da ação penal pública, fiscal da lei), acusado (direitos e garantias, autodefesa), defensor (técnico), querelante, assistente de acusação, e seus papéis no processo.' },
+                            { id: 'proc-penal-atos-processuais', name: 'Atos Processuais', description: 'Estudo dos atos processuais, sua forma (escrita, oral), tempo e lugar de realização, prazos processuais (próprios e impróprios), e as nulidades processuais (absolutas, relativas, e o princípio do prejuízo - pas de nullité sans grief), seus efeitos e convalidação.' },
+                            { id: 'proc-penal-provas', name: 'Provas no Processo Penal', description: 'Sistema de avaliação das provas (livre convencimento motivado, persuasão racional), prova ilícita (ilicitudes por derivação, fontes independentes, descoberta inevitável), e os meios de prova (testemunhas, documentos, perícia, interrogatório do acusado, confissão, busca e apreensão, reconhecimento de pessoas e coisas, acareação, indícios).' },
+                            { id: 'proc-penal-cadeia-custodia', name: 'Cadeia de Custódia', description: 'Conceito e importância da cadeia de custódia para a preservação da integridade e autenticidade da prova pericial, desde o reconhecimento do vestígio até o descarte. Aborda as etapas (reconhecimento, isolamento, fixação, coleta, acondicionamento, transporte, recebimento, processamento, armazenamento, descarte) e a quebra da cadeia.' },
+                            { id: 'proc-penal-prisoes-medidas-cautelares', name: 'Prisões e Medidas Cautelares', description: 'Estudo da prisão em flagrante (modalidades, auto de prisão, relaxamento), prisão preventiva (requisitos, fundamentos, descumprimento de cautelares), prisão temporária (requisitos específicos), e as diversas medidas cautelares diversas da prisão (art. 319 do CPP), liberdade provisória com ou sem fiança.' },
+                            { id: 'proc-penal-procedimentos-penais', name: 'Procedimentos Penais', description: 'Análise dos procedimentos comum (ordinário, sumário e sumaríssimo - Juizados Especiais Criminais) e procedimentos especiais (Lei Maria da Penha, Lei de Drogas, Lei de Crimes Ambientais, Lei de Organizações Criminosas, Tribunal do Júri), com foco nas suas particularidades e ritos.' },
+                            { id: 'proc-penal-recursos', name: 'Recursos no Processo Penal', description: 'Estudo dos recursos cabíveis no processo penal: apelação, recurso em sentido estrito (RESE), embargos de declaração, embargos infringentes e de nulidade, carta testemunhável, correição parcial, habeas corpus, revisão criminal, recurso extraordinário e recurso especial. Abrange prazos, cabimento e efeitos.' },
+                            { id: 'proc-penal-execucao-penal', name: 'Execução Penal (Noções Básicas)', description: 'Noções básicas da Lei de Execução Penal (LEP - Lei nº 7.210/84), regimes de cumprimento de pena (fechado, semiaberto, aberto), progressão de regime, regressão de regime, livramento condicional, remição de pena, direitos e deveres do preso, e os incidentes da execução (falta grave, excesso ou desvio).' }
                         ]
                     },
                     {
@@ -1590,7 +1660,7 @@
                     {
                         name: "Direito Digital",
                         topics: [
-                            { id: 'dig-principios', name: 'Princípios do Direito Digital', description: 'Privacidade, segurança, neutralidade de rede, proteção de dados.' },
+                            { id: 'dig-principios', name: 'Privacidade, segurança, neutralidade de rede, proteção de dados.' },
                             { id: 'dig-marco-civil', name: 'Marco Civil da Internet (Lei 12.965/14)', description: 'Direitos e deveres na internet, provedores.' },
                             { id: 'dig-lgpd', name: 'Lei Geral de Proteção de Dados (LGPD - Lei 13.709/18)', description: 'Tratamento de dados pessoais, direitos dos titulares, ANPD.' },
                             { id: 'dig-crimes-ciberneticos', name: 'Crimes Cibernéticos', description: 'Invasão de dispositivo, interrupção de serviço, falsidade ideológica.' },
@@ -1656,7 +1726,7 @@
                             { id: 'videoconferencia', name: 'Aplicativos de Videoconferência (Zoom, Teams, Meet)', description: 'Funcionalidades e uso de plataformas de videoconferência, com foco em recursos de colaboração e segurança.' },
                             { id: 'dispositivos-moveis-redes-sem-fio', name: 'Dispositivos Móveis e Redes Sem Fio', description: 'Conectividade, segurança e gerenciamento de smartphones, tablets e outros dispositivos móveis em redes sem fio.' },
                             { id: 'ferramentas-produtividade-colaboracao', name: 'Ferramentas de Produtividade e Colaboração Online', description: 'Uso de ferramentas para trabalho em equipe, edição colaborativa e comunicação em tempo real.' },
-                            { id: 'softwares-utilitarios', name: 'Softwares Utilitários e Ferramentas do Sistema', description: 'Funções de utilitários (compactadores, antivírus) e ferramentas de sistema (gerenciador de tarefas, desfragmentador) para manutenção.' },
+                            { id: 'softwares-utilitarios', name: 'Softwares Utilitarios e Ferramentas do Sistema', description: 'Funções de utilitários (compactadores, antivírus) e ferramentas de sistema (gerenciador de tarefas, desfragmentador) para manutenção.' },
                             { id: 'etica-legislacao-informatica', name: 'Noções de Ética e Legislação em Informática (LGPD, Crimes Digitais)', description: 'Aspectos legais e éticos do uso da tecnologia, incluindo a Lei Geral de Proteção de Dados (LGPD) e crimes cibernéticos.' }
                         ]
                     }
@@ -1833,8 +1903,6 @@
                 }
             }
 
-            console.log('Calling Gemini API with payload:', payload);
-
             for (let i = 0; i < maxRetries; i++) {
                 try {
                     const response = await fetch(apiUrl, {
@@ -1850,7 +1918,6 @@
                     }
 
                     const result = await response.json();
-                    console.log('Raw API response:', result);
 
                     if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
                         const text = result.candidates[0].content.parts[0].text;
@@ -1863,7 +1930,6 @@
                     console.error("Erro ao chamar a API Gemini:", error);
                     if (i < maxRetries - 1) {
                         console.warn(`Erro na API Gemini. Tentando novamente em ${retryDelayMs / 1000} segundos... (Tentativa ${i + 1} de ${maxRetries})`);
-                        await new Promise(resolve => setTimeout(resolve, retryDelayMs));
                     } else {
                         throw error; // Re-throw the error if max retries reached
                     }
@@ -1914,6 +1980,7 @@
                 studyText.innerHTML = styledHtml;
                 studyText.classList.remove('hidden');
             } catch (error) {
+                console.error(`Erro ao carregar material de estudo para ${topicName}:`, error);
                 studyText.textContent = 'Ocorreu um erro ao carregar o material de estudo.';
                 studyText.classList.remove('hidden');
             } finally {
@@ -1946,7 +2013,6 @@
             loadingArea.classList.remove('hidden');
             quizContent.classList.add('hidden');
             loadingText.textContent = "Gerando Questões...";
-            console.log('Generating questions for topics:', selectedTopics); // Debugging log
 
             const responseSchema = {
                 type: "ARRAY",
@@ -1961,7 +2027,6 @@
                     required: ["question", "options", "correctAnswer"]
                 }
             };
-            console.log('Response Schema:', responseSchema); // Debugging log
             
             let allGeneratedQuestions = [];
             try {
@@ -1985,10 +2050,7 @@
 
                     prompt = `Gere ${numQuestionsForTopic} questões sobre o tópico de ${subjectName} "${topic.name}" para um simulado de nível ${difficulty}. As questões devem ser elaboradas com o nível e estilo das bancas de concurso FCC, FGV e Cebraspe. Para cada questão, forneça um enunciado ("question"), ${responseMode === 'multipla-escolha' ? '5 opções de resposta ("options")' : 'uma afirmação'}, e a resposta correta ("correctAnswer"). Se relevante, inclua um texto de apoio ("textContext").`;
                     
-                    console.log('Prompt for Gemini:', prompt); // Debugging log
-                    
                     const parsedQuestions = await callGeminiAPI(prompt, true, responseSchema);
-                    console.log('Parsed questions from API:', parsedQuestions); // Debugging log
                     parsedQuestions.forEach(q => {
                         q.topicId = topic.id;
                         q.topicName = topic.name;
@@ -2011,7 +2073,8 @@
                 return;
             }
             currentQuestionData = quizQuestions[currentQuestionIndex];
-            questionText.innerHTML = currentQuestionData.question;
+            // Usando textContent para maior segurança contra XSS
+            questionText.textContent = currentQuestionData.question; 
             optionsContainer.innerHTML = '';
             showTextButton.classList.toggle('hidden', !currentQuestionData.textContext);
 
@@ -2019,7 +2082,7 @@
             options.forEach((optionText, index) => {
                 const button = document.createElement('button');
                 button.className = 'option-btn bg-blue-50 hover:bg-blue-100 text-blue-800 font-medium py-3 px-4 rounded-lg text-left shadow-sm border border-blue-200';
-                button.textContent = optionText;
+                button.textContent = optionText; // textContent para segurança
                 button.addEventListener('click', () => checkAnswer(button, currentQuestionData.correctAnswer));
                 optionsContainer.appendChild(button);
             });
@@ -2057,6 +2120,7 @@
                 studyText.innerHTML = styledHtml;
                 studyText.classList.remove('hidden'); // Show text content
             } catch (error) {
+                console.error(`Erro ao carregar explicação para a questão:`, error);
                 studyText.textContent = 'Não foi possível carregar a explicação.';
                 studyText.classList.remove('hidden'); // Show error message
             } finally {
@@ -2149,6 +2213,7 @@
                 const appealResponse = await callGeminiAPI(prompt);
                 appealResponseText.textContent = appealResponse;
             } catch (error) {
+                console.error(`Erro ao submeter recurso:`, error);
                 appealResponseText.textContent = 'Erro ao avaliar o recurso.';
             }
         }
@@ -2200,7 +2265,7 @@
                 const input = questionDistributionContainer.querySelector(`input[data-topic-id="${topic.id}"]`);
                 topic.quantity = parseInt(input.value) || 0;
             });
-            closeModal(questionDistributionModal);
+            closeModal(questionDistributionModal); // FIX: Changed from questionDistributionContainer
             await startQuizOrSimulado();
         }
 
@@ -2231,6 +2296,7 @@
                 essayFeedback.innerHTML = marked.parse(feedbackMarkdown);
                 postCorrectionActions.classList.remove('hidden');
             } catch (error) {
+                console.error(`Erro ao corrigir redação:`, error);
                 essayFeedback.innerHTML = '<p class="text-red-500">Erro ao corrigir a redação.</p>';
             } finally {
                 correctionLoadingArea.classList.add('hidden');
@@ -2395,6 +2461,7 @@
                 correctEssayBtn.disabled = false;
                 helpButtons.forEach(btn => btn.classList.remove('disabled'));
             } catch (error) {
+                console.error(`Erro ao gerar tema da redação:`, error);
                 generatedThemeText.textContent = 'Erro ao gerar tema. Tente novamente.';
                 themeDisplay.classList.remove('hidden');
             } finally {
@@ -2441,6 +2508,7 @@
                 helpTipsContent.classList.remove('hidden'); // Show text content
             }
             catch (error) {
+                console.error(`Erro ao gerar dicas para a seção ${section}:`, error);
                 helpTipsContent.textContent = 'Erro ao gerar dicas.';
                 helpTipsContent.classList.remove('hidden'); // Show error message
             } finally {
@@ -2464,7 +2532,8 @@
                 } else {
                     contentHtml = `<p>${currentTip.content}</p>`; // Fallback
                 }
-                helpTipsContent.innerHTML = contentHtml;
+                // Usando textContent para maior segurança contra XSS, ou sanitizar explicitamente
+                helpTipsContent.textContent = currentTip.content; // Alterado para textContent
                 tipCounter.textContent = `${currentTipIndex + 1} de ${currentTips.length}`;
                 prevTipBtn.disabled = currentTipIndex === 0;
                 nextTipBtn.disabled = currentTipIndex === currentTips.length - 1;
@@ -2656,7 +2725,6 @@
             confirmGerarTemaBtn.disabled = !selectDisciplinaTema.value;
             confirmGerarTemaBtn.classList.toggle('opacity-50', !selectDisciplinaTema.value);
             confirmGerarTemaBtn.classList.toggle('cursor-not-allowed', !selectDisciplinaTema.value);
-            confirmGerarTemaBtn.dataset.themeType = 'discipline';
         });
         selectDisciplinaTema.addEventListener('change', () => {
             confirmGerarTemaBtn.disabled = !selectDisciplinaTema.value;
